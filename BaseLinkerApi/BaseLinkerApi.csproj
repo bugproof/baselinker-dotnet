@@ -5,7 +5,7 @@
         <LangVersion>default</LangVersion>
         <Nullable>annotations</Nullable>
         
-        <PackageId>baselinkerapi</PackageId>
+        <PackageId>BaseLinker</PackageId>
         <PackageIconUrl>https://baselinker.com/assets/images/favicons/apple-icon-120x120.png</PackageIconUrl>
         <PackageVersion>1.0.1</PackageVersion>
         <Description>BaseLinker API client library</Description>
