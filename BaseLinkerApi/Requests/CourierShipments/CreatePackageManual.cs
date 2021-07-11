@@ -1,5 +1,7 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Text.Json.Serialization;
 using BaseLinkerApi.Common;
+using BaseLinkerApi.Common.JsonConverters;
 
 namespace BaseLinkerApi.Requests.CourierShipments
 {
@@ -30,7 +32,8 @@ namespace BaseLinkerApi.Requests.CourierShipments
         /// Date of dispatch (unix time format)
         /// </summary>
         [JsonPropertyName("pickup_date")]
-        public string PickupDate { get; set; }
+        [JsonConverter(typeof(UnixDateTimeOffsetConverter))]
+        public DateTimeOffset PickupDate { get; set; }
         
         public class Response : ResponseBase
         {

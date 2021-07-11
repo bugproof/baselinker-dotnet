@@ -7,7 +7,8 @@
         
         <PackageId>baselinkerapi</PackageId>
         <PackageIconUrl>https://baselinker.com/assets/images/favicons/apple-icon-120x120.png</PackageIconUrl>
-        <PackageVersion>1.0.0</PackageVersion>
+        <PackageVersion>1.0.1</PackageVersion>
+        <Description>BaseLinker API client library</Description>
     </PropertyGroup>
 
     <ItemGroup>
