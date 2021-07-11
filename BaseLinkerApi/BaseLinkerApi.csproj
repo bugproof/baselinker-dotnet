@@ -4,14 +4,17 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>default</LangVersion>
         <Nullable>annotations</Nullable>
+
+        <AssemblyName>BaseLinker</AssemblyName>
         
         <PackageId>BaseLinker</PackageId>
-        <PackageIconUrl>https://baselinker.com/assets/images/favicons/apple-icon-120x120.png</PackageIconUrl>
-        <PackageVersion>0.1.0</PackageVersion>
         <Description>BaseLinker.com API client library</Description>
+        <PackageVersion>0.1.0</PackageVersion>
+        <PackageTags>ecommerce;e-commerce;baselinker</PackageTags>
         <RepositoryUrl>https://github.com/bugproof/BaseLinkerApi</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>ecommerce;e-commerce;baselinker</PackageTags>
+        <PackageIconUrl>https://baselinker.com/assets/images/favicons/apple-icon-120x120.png</PackageIconUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
