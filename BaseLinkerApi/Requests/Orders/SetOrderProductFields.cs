@@ -96,6 +96,6 @@ namespace BaseLinkerApi.Requests.Orders
         /// Single piece weight
         /// </summary>
         [JsonPropertyName("weight")]
-        public float Weight { get; set; }
+        public double Weight { get; set; }
     }
 }

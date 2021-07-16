@@ -66,7 +66,7 @@ namespace BaseLinkerApi.Requests.ExternalStorages
             public int TaxRate { get; set; }
             
             [JsonPropertyName("weight")]
-            public float Weight { get; set; }
+            public double Weight { get; set; }
             
             [JsonPropertyName("description")]
             public string Description { get; set; }

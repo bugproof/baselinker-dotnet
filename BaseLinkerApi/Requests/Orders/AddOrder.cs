@@ -42,7 +42,7 @@ namespace BaseLinkerApi.Requests.Orders
             public int Quantity { get; set; }
 
             [JsonPropertyName("weight")]
-            public float Weight { get; set; }
+            public double Weight { get; set; }
         }
         
         /// <summary>

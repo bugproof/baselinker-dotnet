@@ -63,19 +63,19 @@ namespace BaseLinkerApi.Requests.ProductCatalog
             public int TaxRate { get; set; }
             
             [JsonPropertyName("weight")]
-            public float Weight { get; set; }
+            public double Weight { get; set; }
             
             [JsonPropertyName("height")]
-            public float Height { get; set; }
+            public double Height { get; set; }
             
             [JsonPropertyName("width")]
-            public float Width { get; set; }
+            public double Width { get; set; }
             
             [JsonPropertyName("length")]
-            public float Length { get; set; }
+            public double Length { get; set; }
 
             [JsonPropertyName("star")]
-            public float Star { get; set; }
+            public double Star { get; set; }
 
             [JsonPropertyName("category_id")]
             public int CategoryId { get; set; }

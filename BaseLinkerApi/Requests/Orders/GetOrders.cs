@@ -95,7 +95,7 @@ namespace BaseLinkerApi.Requests.Orders
             public int Quantity { get; set; }
 
             [JsonPropertyName("weight")]
-            public int Weight { get; set; }
+            public double Weight { get; set; }
         }
 
         public class Order

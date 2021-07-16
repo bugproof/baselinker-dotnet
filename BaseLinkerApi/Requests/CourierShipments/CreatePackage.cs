@@ -21,19 +21,19 @@ namespace BaseLinkerApi.Requests.CourierShipments
         public class Package
         {
             [JsonPropertyName("length")]
-            public int Length { get; set; }
+            public double Length { get; set; }
 
             [JsonPropertyName("height")]
-            public int Height { get; set; }
+            public double Height { get; set; }
 
             [JsonPropertyName("width")]
-            public int Width { get; set; }
+            public double Width { get; set; }
 
             [JsonPropertyName("weight")]
-            public int Weight { get; set; }
+            public double Weight { get; set; }
 
             [JsonPropertyName("size_custom")]
-            public int SizeCustom { get; set; }
+            public double SizeCustom { get; set; }
         }
         
         [JsonPropertyName("order_id")]
