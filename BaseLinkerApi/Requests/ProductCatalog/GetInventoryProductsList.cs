@@ -46,13 +46,13 @@ namespace BaseLinkerApi.Requests.ProductCatalog
         /// (optional) minimum price limit (not displaying products with lower price)
         /// </summary>
         [JsonPropertyName("filter_price_from")]
-        public float? FilterPriceFrom { get; set; }
+        public double? FilterPriceFrom { get; set; }
         
         /// <summary>
         /// (optional) maximum price limit
         /// </summary>
         [JsonPropertyName("filter_price_to")]
-        public float? FilterPriceTo { get; set; }
+        public double? FilterPriceTo { get; set; }
         
         /// <summary>
         /// (optional) minimum quantity limit

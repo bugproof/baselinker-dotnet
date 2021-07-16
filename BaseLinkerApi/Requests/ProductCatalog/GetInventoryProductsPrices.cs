@@ -28,13 +28,13 @@ namespace BaseLinkerApi.Requests.ProductCatalog
             /// The list of price groups can be retrieved using the getInventoryPriceGroups method.
             /// </summary>
             [JsonPropertyName("prices")]
-            public Dictionary<int, float> Prices { get; set; }
+            public Dictionary<int, decimal> Prices { get; set; }
             
             /// <summary>
             /// A list containing variants stocks, where the key is the variant ID. The value is a list where a key is a warehouse ID and value is a stock in this warehouse.
             /// </summary>
             [JsonPropertyName("variants")]
-            public Dictionary<int, float> Variants { get; set; }
+            public Dictionary<int, double> Variants { get; set; }
         }
         
         public class Response : ResponseBase
