@@ -59,7 +59,7 @@ namespace BaseLinkerApi.Requests.Orders
             public string Storage { get; set; }
 
             [JsonPropertyName("storage_id")]
-            public int StorageId { get; set; }
+            public string StorageId { get; set; }
 
             [JsonPropertyName("order_product_id")]
             public string OrderProductId { get; set; }
@@ -68,7 +68,7 @@ namespace BaseLinkerApi.Requests.Orders
             public string ProductId { get; set; }
 
             [JsonPropertyName("variant_id")]
-            public int VariantId { get; set; }
+            public string VariantId { get; set; }
 
             [JsonPropertyName("name")]
             public string Name { get; set; }
@@ -101,7 +101,7 @@ namespace BaseLinkerApi.Requests.Orders
         public class Order
         {
             [JsonPropertyName("order_id")]
-            public string OrderId { get; set; }
+            public int OrderId { get; set; }
 
             [JsonPropertyName("shop_order_id")]
             public string ShopOrderId { get; set; }
@@ -119,7 +119,7 @@ namespace BaseLinkerApi.Requests.Orders
             public string OrderSourceInfo { get; set; }
 
             [JsonPropertyName("order_status_id")]
-            public string OrderStatusId { get; set; }
+            public int OrderStatusId { get; set; }
 
             [JsonPropertyName("date_add")]
             [JsonConverter(typeof(UnixDateTimeOffsetConverter))]

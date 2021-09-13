@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using BaseLinkerApi.Common;
+using BaseLinkerApi.Common.JsonConverters;
 using RateLimiter;
 
 namespace BaseLinkerApi
@@ -14,6 +15,18 @@ namespace BaseLinkerApi
     public interface IRequest<TOutput> where TOutput : ResponseBase {}
     public interface IRequest : IRequest<ResponseBase> {}
 
+    public class BaseLinkerException : Exception
+    {
+        public BaseLinkerException(string errorCode, string errorMessage, Exception? innerException = null) : base($"{errorCode} - {errorMessage}", innerException)
+        {
+            ErrorCode = errorCode;
+            ErrorMessage = errorMessage;
+        }
+
+        public string ErrorCode { get; }
+        public string ErrorMessage { get; }
+    }
+    
     public class BaseLinkerApiClient
     {
         private readonly HttpClient _httpClient;
@@ -31,21 +44,29 @@ namespace BaseLinkerApi
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
         public bool UseRequestLimit { get; set; } = true;
+        public bool ThrowExceptions { get; set; } = true;
 
         private async Task<TOutput> SendImpl<TOutput>(IRequest<TOutput> request,
             CancellationToken cancellationToken = default) where TOutput : ResponseBase
         {
+            var jsonSerializerOptions = new JsonSerializerOptions { IgnoreNullValues = true };
+            jsonSerializerOptions.Converters.Add(new BoolConverter());
             var data = new Dictionary<string, string>
             {
                 { "token", _token },
                 { "method", JsonNamingPolicy.CamelCase.ConvertName(request.GetType().Name) },
                 // https://stackoverflow.com/questions/58570189/is-there-a-built-in-way-of-using-snake-case-as-the-naming-policy-for-json-in-asp
-                { "parameters", JsonSerializer.Serialize((object)request, new JsonSerializerOptions { IgnoreNullValues = true }) }
+                { "parameters", JsonSerializer.Serialize((object)request, jsonSerializerOptions) }
             };
 
             var responseMessage = await _httpClient.PostAsync("https://api.baselinker.com/connector.php",
                 new FormUrlEncodedContent(data), cancellationToken);
-            return (await responseMessage.Content.ReadFromJsonAsync<TOutput>(cancellationToken: cancellationToken))!;
+            var output = await responseMessage.Content.ReadFromJsonAsync<TOutput>(jsonSerializerOptions, cancellationToken);
+            if (output!.IsSuccessStatus == false && ThrowExceptions)
+            {
+                throw new BaseLinkerException(output.ErrorCode!, output.ErrorMessage!);
+            }
+            return output;
         }
         
         public Task<TOutput> Send<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
