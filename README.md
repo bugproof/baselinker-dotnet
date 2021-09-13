@@ -5,4 +5,4 @@
 
 Conforms to the update: **2021-01-28**
 
-PRs and bug reports are always welcome
+PRs and bug reports are always welcome. Breaking changes are expected.
