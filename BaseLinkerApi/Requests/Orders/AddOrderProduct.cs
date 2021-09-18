@@ -78,7 +78,7 @@ namespace BaseLinkerApi.Requests.Orders
         /// VAT rate
         /// </summary>
         [JsonPropertyName("tax_rate")]
-        public int TaxRate { get; set; }
+        public double TaxRate { get; set; }
 
         /// <summary>
         /// Number of pieces

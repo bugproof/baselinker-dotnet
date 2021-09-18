@@ -38,7 +38,7 @@ namespace BaseLinkerApi.Requests.Orders
             public decimal PriceBrutto { get; set; }
 
             [JsonPropertyName("tax_rate")]
-            public int TaxRate { get; set; }
+            public double TaxRate { get; set; }
 
             [JsonPropertyName("quantity")]
             public int Quantity { get; set; }

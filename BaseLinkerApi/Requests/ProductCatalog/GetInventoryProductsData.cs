@@ -60,7 +60,7 @@ namespace BaseLinkerApi.Requests.ProductCatalog
             public string Sku { get; set; }
             
             [JsonPropertyName("tax_rate")]
-            public int TaxRate { get; set; }
+            public double TaxRate { get; set; }
             
             [JsonPropertyName("weight")]
             public double Weight { get; set; }

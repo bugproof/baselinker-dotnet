@@ -70,7 +70,7 @@ namespace BaseLinkerApi.Requests.ProductCatalog
         /// VAT tax rate (e.g. "20")
         /// </summary>
         [JsonPropertyName("tax_rate")]
-        public int TaxRate { get; set; }
+        public double TaxRate { get; set; }
 
         /// <summary>
         /// Weight in kilograms.

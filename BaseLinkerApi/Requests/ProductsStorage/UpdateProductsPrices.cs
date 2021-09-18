@@ -26,7 +26,7 @@ namespace BaseLinkerApi.Requests.ProductsStorage
             public decimal PriceWholesale { get; set; }
 
             [JsonPropertyName("tax_rate")]
-            public int TaxRate { get; set; }
+            public double TaxRate { get; set; }
         }
         
         [JsonPropertyName("storage_id")]
