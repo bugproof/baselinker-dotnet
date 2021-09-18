@@ -50,6 +50,12 @@ namespace BaseLinkerApi.Requests.Orders
         /// </summary>
         [JsonPropertyName("order_status_id")]
         public string OrderStatusId { get; set; }
+        
+        /// <summary>
+        /// (optional) Identifier of custom order source defined in BaseLinker panel. If not provided, default order source is assigned.
+        /// </summary>
+        [JsonPropertyName("source_id")]
+        public int? SourceId { get; set; }
 
         /// <summary>
         /// Date of order creation (in unix time format)
