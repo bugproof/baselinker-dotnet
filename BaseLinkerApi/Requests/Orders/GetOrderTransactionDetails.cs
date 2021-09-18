@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using BaseLinkerApi.Common;
 using BaseLinkerApi.Common.JsonConverters;
@@ -38,19 +39,19 @@ namespace BaseLinkerApi.Requests.Orders
             
             [JsonPropertyName("amazon_ship_date_from")]
             [JsonConverter(typeof(UnixDateTimeOffsetConverter))]
-            public string AmazonShipDateFrom { get; set; }
+            public DateTimeOffset AmazonShipDateFrom { get; set; }
 
             [JsonPropertyName("amazon_ship_date_to")]
             [JsonConverter(typeof(UnixDateTimeOffsetConverter))]
-            public string AmazonShipDateTo { get; set; }
+            public DateTimeOffset AmazonShipDateTo { get; set; }
 
             [JsonPropertyName("amazon_delivery_date_from")]
             [JsonConverter(typeof(UnixDateTimeOffsetConverter))]
-            public string AmazonDeliveryDateFrom { get; set; }
+            public DateTimeOffset AmazonDeliveryDateFrom { get; set; }
 
             [JsonPropertyName("amazon_delivery_date_to")]
             [JsonConverter(typeof(UnixDateTimeOffsetConverter))]
-            public string AmazonDeliveryDateTo { get; set; }
+            public DateTimeOffset AmazonDeliveryDateTo { get; set; }
         }
     }
 }
