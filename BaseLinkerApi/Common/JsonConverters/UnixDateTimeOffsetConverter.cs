@@ -8,7 +8,7 @@ namespace BaseLinkerApi.Common.JsonConverters
     {
         public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            if (reader.TryGetInt64(out var unixTime) || long.TryParse(reader.GetString(), out unixTime))
+            if (reader.TokenType == JsonTokenType.Number && reader.TryGetInt64(out var unixTime) || long.TryParse(reader.GetString(), out unixTime))
             {
                 return DateTimeOffset.FromUnixTimeSeconds(unixTime);
             }
