@@ -56,7 +56,7 @@ namespace BaseLinkerApi.Requests.Orders
                 public string Name { get; set; }
 
                 [JsonPropertyName("price_brutto")]
-                public int PriceBrutto { get; set; }
+                public decimal PriceBrutto { get; set; }
 
                 [JsonPropertyName("price_netto")]
                 public decimal PriceNetto { get; set; }
@@ -164,16 +164,17 @@ namespace BaseLinkerApi.Requests.Orders
                 public string ExchangeCurrency { get; set; }
 
                 [JsonPropertyName("exchange_rate")]
-                public int ExchangeRate { get; set; }
+                public decimal? ExchangeRate { get; set; }
 
                 [JsonPropertyName("exchange_date")]
+                // TODO: DateTime? converter "YYYY-MM-dd" or "" (empty string) to null
                 public string ExchangeDate { get; set; }
 
                 [JsonPropertyName("exchange_info")]
                 public string ExchangeInfo { get; set; }
 
                 [JsonPropertyName("external_id")]
-                public int ExternalId { get; set; }
+                public string ExternalId { get; set; }
 
                 [JsonPropertyName("items")]
                 public List<Item> Items { get; set; }

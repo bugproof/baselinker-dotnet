@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using BaseLinkerApi.Common;
 using BaseLinkerApi.Common.JsonConverters;
 using RateLimiter;
+
+[assembly:InternalsVisibleTo("BaseLinkerApi.Tests")]
 
 namespace BaseLinkerApi
 {
@@ -51,6 +54,7 @@ namespace BaseLinkerApi
         {
             var jsonSerializerOptions = new JsonSerializerOptions { IgnoreNullValues = true };
             jsonSerializerOptions.Converters.Add(new BoolConverter());
+            jsonSerializerOptions.Converters.Add(new StringToNullableDecimalConverter());
             var data = new Dictionary<string, string>
             {
                 { "token", _token },
