@@ -57,14 +57,19 @@ namespace BaseLinkerApi
             jsonSerializerOptions.Converters.Add(new StringToNullableDecimalConverter());
             var data = new Dictionary<string, string>
             {
-                { "token", _token },
                 { "method", JsonNamingPolicy.CamelCase.ConvertName(request.GetType().Name) },
                 // https://stackoverflow.com/questions/58570189/is-there-a-built-in-way-of-using-snake-case-as-the-naming-policy-for-json-in-asp
                 { "parameters", JsonSerializer.Serialize((object)request, jsonSerializerOptions) }
             };
 
-            var responseMessage = await _httpClient.PostAsync("https://api.baselinker.com/connector.php",
-                new FormUrlEncodedContent(data), cancellationToken);
+            var requestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api.baselinker.com/connector.php")
+            {
+                Content = new FormUrlEncodedContent(data),
+            };
+            
+            requestMessage.Headers.Add("X-BLToken", _token);
+
+            var responseMessage = await _httpClient.SendAsync(requestMessage, cancellationToken);
             var output = await responseMessage.Content.ReadFromJsonAsync<TOutput>(jsonSerializerOptions, cancellationToken);
             if (output!.IsSuccessStatus == false && ThrowExceptions)
             {

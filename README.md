@@ -3,6 +3,6 @@
 # BaseLinker.com API client for .NET
 [![NuGet](https://img.shields.io/nuget/v/BaseLinker)](https://www.nuget.org/packages/BaseLinker/)
 
-Conforms to the update: **2021-09-29**
+Conforms to the update: **2021-11-14**
 
 PRs and bug reports are always welcome. Breaking changes are expected.
