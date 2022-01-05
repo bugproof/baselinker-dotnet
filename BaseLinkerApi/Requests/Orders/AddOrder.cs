@@ -31,6 +31,9 @@ namespace BaseLinkerApi.Requests.Orders
 
             [JsonPropertyName("ean")]
             public string Ean { get; set; }
+            
+            [JsonPropertyName("location")]
+            public string Location { get; set; }
 
             [JsonPropertyName("price_brutto")]
             public decimal PriceBrutto { get; set; }

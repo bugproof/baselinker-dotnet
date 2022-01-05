@@ -61,6 +61,12 @@ namespace BaseLinkerApi.Requests.Orders
         /// </summary>
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
+        
+        /// <summary>
+        /// Product location
+        /// </summary>
+        [JsonPropertyName("location")]
+        public string Location { get; set; }
 
         /// <summary>
         /// The detailed product attributes, e.g. "Colour: blue" (Variant name)
