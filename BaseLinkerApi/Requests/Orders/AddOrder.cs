@@ -171,7 +171,7 @@ namespace BaseLinkerApi.Requests.Orders
             /// ID of added order.
             /// </summary>
             [JsonPropertyName("order_id")]
-            public string OrderId { get; set; }
+            public int OrderId { get; set; }
         }
     }
 }
