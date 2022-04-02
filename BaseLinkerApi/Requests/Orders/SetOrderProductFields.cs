@@ -75,6 +75,12 @@ namespace BaseLinkerApi.Requests.Orders
         public string Location { get; set; }
         
         /// <summary>
+        /// Product source warehouse identifier. Only applies to products from BaseLinker inventory.
+        /// </summary>
+        [JsonPropertyName("warehouse_id")]
+        public int WarehouseId { get; set; }
+        
+        /// <summary>
         /// The detailed product attributes, e.g. "Colour: blue" (Variant name)
         /// </summary>
         [JsonPropertyName("attributes")]

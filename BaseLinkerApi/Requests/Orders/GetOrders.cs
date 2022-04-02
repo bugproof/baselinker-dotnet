@@ -84,6 +84,9 @@ namespace BaseLinkerApi.Requests.Orders
             
             [JsonPropertyName("location")]
             public string Location { get; set; }
+            
+            [JsonPropertyName("warehouse_id")]
+            public int WarehouseId { get; set; }
 
             [JsonPropertyName("auction_id")]
             public string AuctionId { get; set; }

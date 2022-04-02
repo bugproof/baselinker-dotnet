@@ -67,6 +67,9 @@ namespace BaseLinkerApi.Requests.Orders
         /// </summary>
         [JsonPropertyName("location")]
         public string Location { get; set; }
+        
+        [JsonPropertyName("warehouse_id")]
+        public int WarehouseId { get; set; }
 
         /// <summary>
         /// The detailed product attributes, e.g. "Colour: blue" (Variant name)
