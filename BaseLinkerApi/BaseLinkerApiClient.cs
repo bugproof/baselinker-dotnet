@@ -35,15 +35,14 @@ namespace BaseLinkerApi
         private readonly HttpClient _httpClient;
         private readonly string _token;
         
-        // The API doesn't return TooManyRequests but instead blocks your account so rate limit must be implemented client-side
-        private readonly TimeLimiter _timeLimiter = TimeLimiter.GetFromMaxCountByInterval(100, TimeSpan.FromMinutes(1));
-        
         public BaseLinkerApiClient(HttpClient httpClient, string token)
         {
             _httpClient = httpClient;
             _token = token;
         }
-
+        
+        // The API doesn't return TooManyRequests but instead blocks your account so rate limit must be implemented client-side
+        public TimeLimiter TimeLimiter { get; set; } = TimeLimiter.GetFromMaxCountByInterval(100, TimeSpan.FromMinutes(1));
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
         public bool UseRequestLimit { get; set; } = true;
@@ -80,7 +79,7 @@ namespace BaseLinkerApi
         
         public Task<TOutput> Send<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
         {
-            return UseRequestLimit ? _timeLimiter.Enqueue(() => SendImpl(request, cancellationToken), cancellationToken) : SendImpl(request, cancellationToken);
+            return UseRequestLimit ? TimeLimiter.Enqueue(() => SendImpl(request, cancellationToken), cancellationToken) : SendImpl(request, cancellationToken);
         }
     }
 }
