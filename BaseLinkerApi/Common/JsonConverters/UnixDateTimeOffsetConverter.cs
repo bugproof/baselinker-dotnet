@@ -2,23 +2,22 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace BaseLinkerApi.Common.JsonConverters
+namespace BaseLinkerApi.Common.JsonConverters;
+
+internal class UnixDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 {
-    internal class UnixDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
+    public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        if (reader.TokenType == JsonTokenType.Number && reader.TryGetInt64(out var unixTime) || long.TryParse(reader.GetString(), out unixTime))
         {
-            if (reader.TokenType == JsonTokenType.Number && reader.TryGetInt64(out var unixTime) || long.TryParse(reader.GetString(), out unixTime))
-            {
-                return DateTimeOffset.FromUnixTimeSeconds(unixTime);
-            }
-
-            throw new InvalidOperationException();
+            return DateTimeOffset.FromUnixTimeSeconds(unixTime);
         }
 
-        public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
-        {
-            writer.WriteNumberValue(value.ToUnixTimeSeconds());
-        }
+        throw new InvalidOperationException();
+    }
+
+    public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
+    {
+        writer.WriteNumberValue(value.ToUnixTimeSeconds());
     }
 }
