@@ -3,13 +3,19 @@ using System.Net.Http;
 using BaseLinkerApi;
 using Requests = BaseLinkerApi.Requests;
 
-// TODO: it seems like by default only obsolete api works all methods from ProductCatalog are marked as BETA and return an error 
-// ERROR_METHOD - Method available only for accounts with unlocked new BaseLinker storage module. Check products list in old BaseLinker storage module for more information.
-// unless you opt-in
+var token = Environment.GetEnvironmentVariable("BASELINKER_TOKEN");
+if (string.IsNullOrWhiteSpace(token))
+{
+    Console.WriteLine("BASELINKER_TOKEN environment variable not set or incorrect");
+    return;
+}
 
 using var httpClient = new HttpClient();
-var baseLinkerClient = new BaseLinkerApiClient(httpClient, "3001646-3007387-D7KZKSX8A2JFJEX41KG9YNBCQEPLYBHKRVSNM4QC0DWSN29226CZVVDSGR6A5WR6");
-// baseLinkerClient.ThrowExceptions = false; // Set this to false if you want to check success status manually, error-prone. If you forget to check you will get null reference exceptions.
+var baseLinkerClient = new BaseLinkerApiClient(httpClient, token)
+{
+    ThrowExceptions =
+        true, // Set this to false if you want to check success status manually, error-prone. If you forget to check you will get null reference exceptions.
+};
 try
 {
     var response = await baseLinkerClient.Send(new Requests.CourierShipments.GetCouriersList());
