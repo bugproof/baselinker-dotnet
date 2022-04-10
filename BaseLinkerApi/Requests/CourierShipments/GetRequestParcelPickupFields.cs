@@ -41,6 +41,7 @@ public class GetRequestParcelPickupFields : IRequest<GetRequestParcelPickupField
 
     public class Response : ResponseBase
     {
+        [JsonPropertyName("fields")] 
         public List<RequestParcelPickupField> Fields { get; set; }
     }
 }
