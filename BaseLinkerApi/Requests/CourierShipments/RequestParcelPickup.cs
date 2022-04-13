@@ -27,11 +27,17 @@ public class RequestParcelPickup : IRequest<RequestParcelPickup.Response>
     [JsonPropertyName("account_id")]
     public int AccountId { get; set; }
 
+    public class Field
+    {
+        public string Id { get; set; }
+        public string Value { get; set; }
+    }
+    
     /// <summary>
     /// List of form fields retrieved from the request getRequestParcelPickupFields
     /// </summary>
     [JsonPropertyName("fields")] 
-    public List<GetRequestParcelPickupFields.RequestParcelPickupField> Fields { get; set; }
+    public List<Field> Fields { get; set; }
     
     public class Response : ResponseBase
     {
