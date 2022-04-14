@@ -145,7 +145,7 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     /// https://api.baselinker.com/index.php?method=addInventoryProduct
     /// </summary>
     [JsonPropertyName("text_fields")]
-    public Dictionary<string, string> TextFields { get; set; }
+    public Dictionary<string, object> TextFields { get; set; }
 
     /// <summary>
     /// An array of product images (maximum 16). Each element of the array is a separate photo.
