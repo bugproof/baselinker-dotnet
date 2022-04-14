@@ -40,19 +40,22 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     /// Main product identifier, given only during the update. Should be left blank when creating a new product. The new product identifier is returned as a response to this method.
     /// </summary>
     [JsonPropertyName("product_id")]
-    public string ProductId { get; set; }
+    public string? ProductId { get; set; }
         
     /// <summary>
     /// Product parent ID. To be provided only if the added/edited product is a variant of another product.
     /// </summary>
     [JsonPropertyName("parent_id")]
-    public string ParentId { get; set; }
+    public string? ParentId { get; set; }
 
     /// <summary>
     /// Is the given product a part of a bundle
     /// </summary>
     [JsonPropertyName("is_bundle")]
     public bool IsBundle { get; set; }
+    
+    [JsonPropertyName("bundle_products")]
+    public Dictionary<string, int> BundleProducts { get; set; }
 
     /// <summary>
     /// Product EAN number.
@@ -142,7 +145,7 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     /// https://api.baselinker.com/index.php?method=addInventoryProduct
     /// </summary>
     [JsonPropertyName("text_fields")]
-    public Dictionary<string, object> TextFields { get; set; }
+    public Dictionary<string, string> TextFields { get; set; }
 
     /// <summary>
     /// An array of product images (maximum 16). Each element of the array is a separate photo.
