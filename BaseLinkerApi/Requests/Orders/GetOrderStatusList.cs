@@ -19,6 +19,12 @@ public class GetOrderStatusList : IRequest<GetOrderStatusList.Response>
 
         [JsonPropertyName("name_for_customer")]
         public string NameForCustomer { get; set; }
+        
+        /// <summary>
+        /// status color in hex
+        /// </summary>
+        [JsonPropertyName("color")]
+        public string Color { get; set; }
     }
         
     public class Response : ResponseBase
