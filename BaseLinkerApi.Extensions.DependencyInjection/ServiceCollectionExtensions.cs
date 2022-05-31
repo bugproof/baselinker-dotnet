@@ -1,9 +1,8 @@
-﻿using BaseLinkerApi.DependencyInjection.Options;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace BaseLinkerApi.DependencyInjection.Extensions;
+namespace BaseLinkerApi.Extensions.DependencyInjection;
 
-public static class DiExtensions
+public static class ServiceCollectionExtensions
 {
     /// <summary>
     /// Registers IBaseLinkerApiClient
@@ -14,7 +13,7 @@ public static class DiExtensions
     public static void AddBaseLinker(this IServiceCollection services,Action<BaseLinkerOptions> configure)
     {
         services.AddOptions<BaseLinkerOptions>().Configure(configure);
-        services.AddHttpClient<IBaseLinkerApiClient, BaseLinkerApiClientAspNet>(); }
+        services.AddHttpClient<IBaseLinkerApiClient, InjectableBaseLinkerApiClient>(); }
 
     /// <summary>
     /// Registers IBaseLinkerApiClient
@@ -25,7 +24,7 @@ public static class DiExtensions
     {
         ArgumentNullException.ThrowIfNull(token);
         services.AddOptions<BaseLinkerOptions>().Configure(c => c.Token = token);
-        services.AddHttpClient<IBaseLinkerApiClient, BaseLinkerApiClientAspNet>();
+        services.AddHttpClient<IBaseLinkerApiClient, InjectableBaseLinkerApiClient>();
     }
     
 }

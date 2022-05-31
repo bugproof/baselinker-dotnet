@@ -6,10 +6,10 @@
         <LangVersion>default</LangVersion>
         <Nullable>enable</Nullable>
 
-        <AssemblyName>BaseLinker.DependencyInjection</AssemblyName>
+        <AssemblyName>BaseLinker.Extensions.DependencyInjection</AssemblyName>
 
-        <PackageId>BaseLinker.DependencyInjection</PackageId>
-        <Description>BaseLinker.com API client library</Description>
+        <PackageId>BaseLinker.Extensions.DependencyInjection</PackageId>
+        <Description>BaseLinker.com API client library (dependency injection extensions)</Description>
         <PackageVersion>0.2.2</PackageVersion>
         <PackageTags>ecommerce;e-commerce;baselinker</PackageTags>
         <RepositoryUrl>https://github.com/bugproof/BaseLinkerApi</RepositoryUrl>

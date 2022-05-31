@@ -1,4 +1,4 @@
-﻿namespace BaseLinkerApi.DependencyInjection.Options;
+﻿namespace BaseLinkerApi.Extensions.DependencyInjection;
 
 /// <summary>
 /// Configuration class, that implements OptionsPattern

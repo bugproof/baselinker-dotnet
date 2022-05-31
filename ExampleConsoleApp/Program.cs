@@ -18,7 +18,7 @@ var baseLinkerClient = new BaseLinkerApiClient(httpClient, token)
 };
 try
 {
-    var response = await baseLinkerClient.Send(new Requests.CourierShipments.GetCouriersList());
+    var response = await baseLinkerClient.SendAsync(new Requests.CourierShipments.GetCouriersList());
     foreach (var courier in response.Couriers)
     {
         Console.WriteLine(courier.Code);
