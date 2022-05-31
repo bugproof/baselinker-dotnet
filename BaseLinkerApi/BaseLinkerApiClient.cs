@@ -32,7 +32,7 @@ public class BaseLinkerException : Exception
 
 public interface IBaseLinkerApiClient
 {
-    Task<TOutput> Send<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase;
+    Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase;
 }
 
 public class BaseLinkerApiClient : IBaseLinkerApiClient
@@ -82,7 +82,7 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
         return output;
     }
         
-    public Task<TOutput> Send<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
+    public Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
     {
         return UseRequestLimit ? TimeLimiter.Enqueue(() => SendImpl(request, cancellationToken), cancellationToken) : SendImpl(request, cancellationToken);
     }

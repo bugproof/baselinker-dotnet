@@ -21,6 +21,6 @@ internal class BaseLinkerApiClientAspNet : IBaseLinkerApiClient
         };
     }
 
-    public Task<TOutput> Send<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
-        => _client.Send(request, cancellationToken);
+    public Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
+        => _client.SendAsync(request, cancellationToken);
 }
