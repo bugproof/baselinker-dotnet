@@ -102,6 +102,12 @@ public class GetOrders : IRequest<GetOrders.Response>
 
         [JsonPropertyName("weight")]
         public double Weight { get; set; }
+        
+        /// <summary>
+        /// ID of the bundle that was split to acquire this order item. Only applies to bundles from BaseLinker inventory. Returns 0 if the product was not acquired from splitting a bundle.
+        /// </summary>
+        [JsonPropertyName("bundle_id")]
+        public int BundleId { get; set; }
     }
 
     public class Order
@@ -238,11 +244,16 @@ public class GetOrders : IRequest<GetOrders.Response>
         [JsonPropertyName("want_invoice")]
         public bool WantInvoice { get; set; }
 
+        [Obsolete]
         [JsonPropertyName("extra_field_1")]
         public string ExtraField1 { get; set; }
 
+        [Obsolete]
         [JsonPropertyName("extra_field_2")]
         public string ExtraField2 { get; set; }
+        
+        [JsonPropertyName("custom_extra_fields")]
+        public Dictionary<object, object> CustomExtraFields { get; set; }
 
         [JsonPropertyName("order_page")]
         public string OrderPage { get; set; }

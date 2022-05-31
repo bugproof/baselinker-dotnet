@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace BaseLinkerApi.Requests.Orders;
 
@@ -166,15 +168,20 @@ public class SetOrderFields : IRequest
     /// <summary>
     /// Value from "extra field 1". - the seller can store any information there
     /// </summary>
+    [Obsolete]
     [JsonPropertyName("extra_field_1")]
     public string? ExtraField1 { get; set; }
         
     /// <summary>
     /// Value from "extra field 2". - the seller can store any information there
     /// </summary>
+    [Obsolete]
     [JsonPropertyName("extra_field_2")]
     public string? ExtraField2 { get; set; }
         
+    [JsonPropertyName("custom_extra_fields")]
+    public Dictionary<object, object> CustomExtraFields { get; set; }
+    
     /// <summary>
     /// Flag indicating the status of the order products collection (1 - all products have been collected, 0 - not all products have been collected)
     /// </summary>

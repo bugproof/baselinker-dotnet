@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using BaseLinkerApi.Common;
 
@@ -162,12 +163,17 @@ public class AddOrder : IRequest<AddOrder.Response>
     [JsonPropertyName("want_invoice")]
     public string WantInvoice { get; set; }
 
+    [Obsolete]
     [JsonPropertyName("extra_field_1")]
     public string ExtraField1 { get; set; }
 
+    [Obsolete]
     [JsonPropertyName("extra_field_2")]
     public string ExtraField2 { get; set; }
 
+    [JsonPropertyName("custom_extra_fields")]
+    public Dictionary<object, object> CustomExtraFields { get; set; }
+    
     [JsonPropertyName("products")]
     public List<Product> Products { get; set; }
         
