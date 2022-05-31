@@ -10,7 +10,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services"></param>
     /// <param name="configure"></param>
-    public static void AddBaseLinker(this IServiceCollection services,Action<BaseLinkerOptions> configure)
+    public static void AddBaseLinker(this IServiceCollection services, Action<BaseLinkerOptions> configure)
     {
         services.AddOptions<BaseLinkerOptions>().Configure(configure);
         services.AddHttpClient<IBaseLinkerApiClient, InjectableBaseLinkerApiClient>(); }
@@ -20,9 +20,9 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services"></param>
     /// <param name="token"></param>
-    public static void AddBaseLinker(this IServiceCollection services,string token)
+    public static void AddBaseLinker(this IServiceCollection services, string token)
     {
-        ArgumentNullException.ThrowIfNull(token);
+        if (token == null) throw new ArgumentNullException(nameof(token));
         services.AddOptions<BaseLinkerOptions>().Configure(c => c.Token = token);
         services.AddHttpClient<IBaseLinkerApiClient, InjectableBaseLinkerApiClient>();
     }

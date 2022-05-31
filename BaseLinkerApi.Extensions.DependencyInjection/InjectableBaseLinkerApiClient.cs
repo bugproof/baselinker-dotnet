@@ -12,7 +12,7 @@ internal class InjectableBaseLinkerApiClient : IBaseLinkerApiClient
 
     public InjectableBaseLinkerApiClient(HttpClient httpClient, IOptions<BaseLinkerOptions> options)
     {
-        ArgumentNullException.ThrowIfNull(options.Value.Token);
+        if (options.Value.Token == null) throw new ArgumentNullException(nameof(options.Value.Token));
         _client = new BaseLinkerApiClient(httpClient, options.Value.Token)
         {
             ThrowExceptions = options.Value.ThrowExceptions,
