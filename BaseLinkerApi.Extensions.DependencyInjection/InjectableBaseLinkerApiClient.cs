@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using BaseLinkerApi.Common;
 using Microsoft.Extensions.Options;
+using RateLimiter;
 
 [assembly:InternalsVisibleTo("BaseLinkerApi.Tests")]
 
@@ -16,7 +17,8 @@ internal class InjectableBaseLinkerApiClient : IBaseLinkerApiClient
         _client = new BaseLinkerApiClient(httpClient, options.Value.Token)
         {
             ThrowExceptions = options.Value.ThrowExceptions,
-            UseRequestLimit = options.Value.UseRequestLimit
+            UseRequestLimit = options.Value.UseRequestLimit,
+            TimeLimiter = TimeLimiter.GetFromMaxCountByInterval(options.Value.MaxRequestsPerMinute, TimeSpan.FromMinutes(1))
         };
     }
 
