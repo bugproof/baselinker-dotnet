@@ -1,7 +1,7 @@
-﻿using BaseLinkerApi.AspNetCore.Options;
+﻿using BaseLinkerApi.DependencyInjection.Options;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BaseLinkerApi.AspNetCore.Extensions;
+namespace BaseLinkerApi.DependencyInjection.Extensions;
 
 public static class DiExtensions
 {

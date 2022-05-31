@@ -1,11 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
-using BaseLinkerApi.AspNetCore.Options;
 using BaseLinkerApi.Common;
+using BaseLinkerApi.DependencyInjection.Options;
 using Microsoft.Extensions.Options;
 
 [assembly:InternalsVisibleTo("BaseLinkerApi.Tests")]
 
-namespace BaseLinkerApi.AspNetCore;
+namespace BaseLinkerApi.DependencyInjection;
 
 internal class BaseLinkerApiClientAspNet : IBaseLinkerApiClient
 {

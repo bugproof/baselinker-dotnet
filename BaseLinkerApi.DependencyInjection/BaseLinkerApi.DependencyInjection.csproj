@@ -6,9 +6,9 @@
         <LangVersion>default</LangVersion>
         <Nullable>enable</Nullable>
 
-        <AssemblyName>BaseLinker.AspNetCore</AssemblyName>
+        <AssemblyName>BaseLinker.DependencyInjection</AssemblyName>
 
-        <PackageId>BaseLinker.AspNetCore</PackageId>
+        <PackageId>BaseLinker.DependencyInjection</PackageId>
         <Description>BaseLinker.com API client library</Description>
         <PackageVersion>0.2.2</PackageVersion>
         <PackageTags>ecommerce;e-commerce;baselinker</PackageTags>

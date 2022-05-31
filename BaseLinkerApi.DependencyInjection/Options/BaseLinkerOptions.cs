@@ -1,4 +1,4 @@
-﻿namespace BaseLinkerApi.AspNetCore.Options;
+﻿namespace BaseLinkerApi.DependencyInjection.Options;
 
 /// <summary>
 /// Configuration class, that implements OptionsPattern
