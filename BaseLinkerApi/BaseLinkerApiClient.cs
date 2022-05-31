@@ -29,8 +29,13 @@ public class BaseLinkerException : Exception
     public string ErrorCode { get; }
     public string ErrorMessage { get; }
 }
-    
-public class BaseLinkerApiClient
+
+public interface IBaseLinkerApiClient
+{
+    Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase;
+}
+
+public class BaseLinkerApiClient : IBaseLinkerApiClient
 {
     private readonly HttpClient _httpClient;
     private readonly string _token;
@@ -77,7 +82,7 @@ public class BaseLinkerApiClient
         return output;
     }
         
-    public Task<TOutput> Send<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
+    public Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
     {
         return UseRequestLimit ? TimeLimiter.Enqueue(() => SendImpl(request, cancellationToken), cancellationToken) : SendImpl(request, cancellationToken);
     }

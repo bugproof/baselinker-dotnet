@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLinkerApi", "BaseLinker
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLinkerApiConsoleApp", "BaseLinkerApiConsoleApp\BaseLinkerApiConsoleApp.csproj", "{0E7F10FC-5EC3-4BF7-BE87-9651290FACF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLinkerApi.DependencyInjection", "BaseLinkerApi.DependencyInjection\BaseLinkerApi.DependencyInjection.csproj", "{5384CC59-AE99-41E8-A80B-A8B1F0DDDED1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{0E7F10FC-5EC3-4BF7-BE87-9651290FACF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E7F10FC-5EC3-4BF7-BE87-9651290FACF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E7F10FC-5EC3-4BF7-BE87-9651290FACF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5384CC59-AE99-41E8-A80B-A8B1F0DDDED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5384CC59-AE99-41E8-A80B-A8B1F0DDDED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5384CC59-AE99-41E8-A80B-A8B1F0DDDED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5384CC59-AE99-41E8-A80B-A8B1F0DDDED1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
