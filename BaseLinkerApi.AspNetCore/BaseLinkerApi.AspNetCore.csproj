@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>default</LangVersion>
+        <Nullable>enable</Nullable>
+
+        <AssemblyName>BaseLinker.AspNetCore</AssemblyName>
+
+        <PackageId>BaseLinker.AspNetCore</PackageId>
+        <Description>BaseLinker.com API client library</Description>
+        <PackageVersion>0.2.2</PackageVersion>
+        <PackageTags>ecommerce;e-commerce;baselinker</PackageTags>
+        <RepositoryUrl>https://github.com/bugproof/BaseLinkerApi</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageIconUrl>https://baselinker.com/assets/images/favicons/apple-icon-120x120.png</PackageIconUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BaseLinkerApi\BaseLinkerApi.csproj" />
+    </ItemGroup>
+
+</Project>

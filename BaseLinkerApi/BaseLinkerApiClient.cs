@@ -29,8 +29,13 @@ public class BaseLinkerException : Exception
     public string ErrorCode { get; }
     public string ErrorMessage { get; }
 }
-    
-public class BaseLinkerApiClient
+
+public interface IBaseLinkerApiClient
+{
+    Task<TOutput> Send<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase;
+}
+
+public class BaseLinkerApiClient : IBaseLinkerApiClient
 {
     private readonly HttpClient _httpClient;
     private readonly string _token;
