@@ -50,7 +50,7 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
         [JsonPropertyName("locations")]
         public Dictionary<string, int> Locations { get; set; }
     }
-        
+    
     public class Product
     {
         [JsonPropertyName("ean")]
@@ -94,6 +94,12 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
             
         [JsonPropertyName("text_fields")] 
         public Dictionary<string, object> TextFields { get; set; }
+
+        [JsonPropertyName("average_cost")]
+        public decimal AverageCost { get; set; }
+        
+        [JsonPropertyName("average_landed_cost")]
+        public decimal AverageLandedCost { get; set; }
 
         [JsonPropertyName("images")]
         public List<string> Images { get; set; }

@@ -40,19 +40,40 @@ public class GetOrders : IRequest<GetOrders.Response>
     /// </summary>
     [JsonPropertyName("get_unconfirmed_orders")]
     public bool? GetUnconfirmedOrders { get; set; }
-        
+
+    /// <summary>
+    /// (optional, false by default) Download values of custom additional fields.
+    /// </summary>
+    [JsonPropertyName("include_custom_extra_fields")]
+    public bool? IncludeCustomExtraFields { get; set; }
+    
     /// <summary>
     /// (optional) The status identifier from which orders are to be collected. Leave blank to download orders from all statuses.
     /// </summary>
     [JsonPropertyName("status_id")]
     public int? StatusId { get; set; }
-        
+    
     /// <summary>
     /// (optional) Filtering of order lists by e-mail address (displays only orders with the given e-mail address).
     /// </summary>
     [JsonPropertyName("filter_email")]
     public string? FilterEmail { get; set; }
-        
+    
+    /// <summary>
+    /// (optional) Filtering of order lists by order source, for instance "ebay", "amazon" (displays only orders come from given source).
+    /// The list of order sources can be retrieved with getOrderSources method.
+    /// </summary>
+    [JsonPropertyName("filter_order_source")]
+    public string? FilterOrderSource { get; set; }
+    
+    /// <summary>
+    /// (optional) Filtering of order lists by order source identifier, for instance "2523" (displays only orders come from order source defined in "filter_order_source" identified by given order source identifier).
+    /// Filtering by order source indentifier requires "filter_order_source" to be set prior.
+    /// The list of order source identifiers can be retrieved with getOrderSources method.
+    /// </summary>
+    [JsonPropertyName("filter_order_source_id")]
+    public string? FilterOrderSourceId { get; set; }
+    
     public class Product
     {
         [JsonPropertyName("storage")]
