@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using BaseLinkerApi.Common.JsonConverters;
 using Xunit;
 using Xunit.Abstractions;
@@ -9,7 +10,7 @@ namespace BaseLinkerApi.Tests
     public class DeserializationTest
     {
         private readonly ITestOutputHelper _testOutputHelper;
-        private static readonly JsonSerializerOptions JsonSerializerOptions = new() { IgnoreNullValues = true, Converters = { new BoolConverter(), new StringToNullableDecimalConverter() }};
+        private static readonly JsonSerializerOptions JsonSerializerOptions = new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull, Converters = { new BoolConverter(), new StringToNullableDecimalConverter() }};
 
         public DeserializationTest(ITestOutputHelper testOutputHelper)
         {

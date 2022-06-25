@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using BaseLinkerApi.Common;
@@ -56,7 +57,7 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
     private async Task<TOutput> SendImpl<TOutput>(IRequest<TOutput> request,
         CancellationToken cancellationToken = default) where TOutput : ResponseBase
     {
-        var jsonSerializerOptions = new JsonSerializerOptions { IgnoreNullValues = true };
+        var jsonSerializerOptions = new JsonSerializerOptions { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
         jsonSerializerOptions.Converters.Add(new BoolConverter());
         jsonSerializerOptions.Converters.Add(new StringToNullableDecimalConverter());
         var data = new Dictionary<string, string>
