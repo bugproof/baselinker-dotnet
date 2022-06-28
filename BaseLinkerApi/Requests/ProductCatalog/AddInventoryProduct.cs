@@ -54,8 +54,11 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     [JsonPropertyName("is_bundle")]
     public bool IsBundle { get; set; }
     
+    /// <summary>
+    /// Should be null when IsBundle is false
+    /// </summary>
     [JsonPropertyName("bundle_products")]
-    public Dictionary<string, int> BundleProducts { get; set; }
+    public Dictionary<string, int>? BundleProducts { get; set; }
 
     /// <summary>
     /// Product EAN number.
