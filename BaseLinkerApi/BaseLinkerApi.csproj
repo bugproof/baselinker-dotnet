@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
         <LangVersion>default</LangVersion>
         <Nullable>annotations</Nullable>
 
@@ -19,8 +19,8 @@
 
     <ItemGroup>
       <PackageReference Include="RateLimiter" Version="2.2.0" />
-      <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
-      <PackageReference Include="System.Text.Json" Version="6.0.5" />
+      <PackageReference Include="System.Net.Http.Json" Version="6.0.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+      <PackageReference Include="System.Text.Json" Version="6.0.5" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
     </ItemGroup>
 
 </Project>
