@@ -13,8 +13,8 @@ if (string.IsNullOrWhiteSpace(token))
 using var httpClient = new HttpClient();
 var baseLinkerClient = new BaseLinkerApiClient(httpClient, token)
 {
-    ThrowExceptions =
-        true, // Set this to false if you want to check success status manually, error-prone. If you forget to check you will get null reference exceptions.
+    // Set this to false if you want to check success status manually, error-prone. If you forget to check you will get null reference exceptions.
+    ThrowExceptions = true
 };
 try
 {
