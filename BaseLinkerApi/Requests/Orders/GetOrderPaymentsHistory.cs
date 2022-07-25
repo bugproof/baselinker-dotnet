@@ -51,6 +51,9 @@ public class GetOrderPaymentsHistory : IRequest<GetOrderPaymentsHistory.Response
 
         [JsonPropertyName("external_payment_id")]
         public string ExternalPaymentId { get; set; }
+        
+        [JsonPropertyName("comment")]
+        public string Comment { get; set; }
     }
         
     public class Response : ResponseBase

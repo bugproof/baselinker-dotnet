@@ -64,8 +64,8 @@ public class AddOrder : IRequest<AddOrder.Response>
     /// <summary>
     /// (optional) Identifier of custom order source defined in BaseLinker panel. If not provided, default order source is assigned.
     /// </summary>
-    [JsonPropertyName("source_id")]
-    public int? SourceId { get; set; }
+    [JsonPropertyName("custom_source_id")]
+    public int? CustomSourceId { get; set; }
 
     /// <summary>
     /// Date of order creation (in unix time format)
