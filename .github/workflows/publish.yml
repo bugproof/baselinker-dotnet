@@ -15,7 +15,7 @@ jobs:
 
       - name: Publish on version change
         id: publish_nuget
-        uses: Rebel028/publish-nuget@v2.6.3
+        uses: alirezanet/publish-nuget@v3.0.0
         with:
           # Filepath of the project to be packaged, relative to root of repository
           PROJECT_FILE_PATH: BaseLinkerApi/BaseLinkerApi.csproj
