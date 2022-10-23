@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using BaseLinkerApi.Common;
 using BaseLinkerApi.Common.JsonConverters;
@@ -129,6 +130,11 @@ public class GetOrders : IRequest<GetOrders.Response>
         /// </summary>
         [JsonPropertyName("bundle_id")]
         public int BundleId { get; set; }
+        
+        /// <summary>
+        /// Additional not parsed data
+        /// </summary>
+        [JsonExtensionData] public Dictionary<string, JsonElement>? ExtensionsData { get; set; }
     }
 
     public class Order
@@ -287,6 +293,11 @@ public class GetOrders : IRequest<GetOrders.Response>
 
         [JsonPropertyName("products")]
         public List<Product> Products { get; set; }
+        
+        /// <summary>
+        /// Additional not parsed data
+        /// </summary>
+        [JsonExtensionData] public Dictionary<string, JsonElement>? ExtensionsData { get; set; }
     }
         
     public class Response : ResponseBase
