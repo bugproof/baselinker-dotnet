@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
@@ -72,9 +74,17 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
             { "parameters", JsonSerializer.Serialize((object)request, jsonSerializerOptions) }
         };
 
+#if NETSTANDARD2_0
+        // Possible workaround for pre .NET 5 issue with FormUrlEncodedContent
+        var items = data.Select(i => WebUtility.UrlEncode(i.Key) + "=" + WebUtility.UrlEncode(i.Value));
+        var content = new StringContent(string.Join("&", items), null, "application/x-www-form-urlencoded");
+#else
+        var content = new FormUrlEncodedContent(data);
+#endif
+        
         var requestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api.baselinker.com/connector.php")
         {
-            Content = new FormUrlEncodedContent(data),
+            Content = content
         };
             
         requestMessage.Headers.Add("X-BLToken", _token);
