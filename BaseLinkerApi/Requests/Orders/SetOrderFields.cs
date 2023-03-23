@@ -80,6 +80,12 @@ public class SetOrderFields : IRequest
     /// </summary>
     [JsonPropertyName("delivery_city")]
     public string? DeliveryCity { get; set; }
+    
+    /// <summary>
+    /// Delivery address - state/province
+    /// </summary>
+    [JsonPropertyName("delivery_state")]
+    public string? DeliveryState { get; set; }
         
     /// <summary>
     /// Delivery address - country code (two-letter, e.g. EN)
@@ -152,6 +158,12 @@ public class SetOrderFields : IRequest
     /// </summary>
     [JsonPropertyName("invoice_city")]
     public string? InvoiceCity { get; set; }
+    
+    /// <summary>
+    /// Billing details - state/province
+    /// </summary>
+    [JsonPropertyName("invoice_state")]
+    public string? InvoiceState { get; set; }
         
     /// <summary>
     /// Billing details - country code (two-letter, e.g. EN)

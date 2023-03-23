@@ -225,6 +225,9 @@ public class GetOrders : IRequest<GetOrders.Response>
 
         [JsonPropertyName("delivery_city")]
         public string DeliveryCity { get; set; }
+        
+        [JsonPropertyName("delivery_state")]
+        public string DeliveryState { get; set; }
 
         [JsonPropertyName("delivery_postcode")]
         public string DeliveryPostcode { get; set; }
@@ -261,6 +264,9 @@ public class GetOrders : IRequest<GetOrders.Response>
 
         [JsonPropertyName("invoice_city")]
         public string InvoiceCity { get; set; }
+        
+        [JsonPropertyName("invoice_state")]
+        public string InvoiceState { get; set; }
 
         [JsonPropertyName("invoice_postcode")]
         public string InvoicePostcode { get; set; }

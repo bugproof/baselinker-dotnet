@@ -120,6 +120,9 @@ public class AddOrder : IRequest<AddOrder.Response>
 
     [JsonPropertyName("delivery_postcode")]
     public string DeliveryPostcode { get; set; }
+    
+    [JsonPropertyName("delivery_state")]
+    public string DeliveryState { get; set; }
 
     [JsonPropertyName("delivery_country_code")]
     public string DeliveryCountryCode { get; set; }
@@ -156,6 +159,9 @@ public class AddOrder : IRequest<AddOrder.Response>
 
     [JsonPropertyName("invoice_postcode")]
     public string InvoicePostcode { get; set; }
+    
+    [JsonPropertyName("invoice_state")]
+    public string InvoiceState { get; set; }
 
     [JsonPropertyName("invoice_country_code")]
     public string InvoiceCountryCode { get; set; }
