@@ -74,12 +74,12 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
             { "parameters", JsonSerializer.Serialize((object)request, jsonSerializerOptions) }
         };
 
-#if NETSTANDARD2_0
-        // Possible workaround for pre .NET 5 issue with FormUrlEncodedContent
-        var items = data.Select(i => WebUtility.UrlEncode(i.Key) + "=" + WebUtility.UrlEncode(i.Value));
-        var content = new StringContent(string.Join("&", items), null, "application/x-www-form-urlencoded");
+#if NET5_0_OR_GREATER
+    var content = new FormUrlEncodedContent(data);
 #else
-        var content = new FormUrlEncodedContent(data);
+    // Possible workaround for pre .NET 5 issue with FormUrlEncodedContent length limit
+    var items = data.Select(i => WebUtility.UrlEncode(i.Key) + "=" + WebUtility.UrlEncode(i.Value));
+    var content = new StringContent(string.Join("&", items), null, "application/x-www-form-urlencoded");
 #endif
         
         var requestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api.baselinker.com/connector.php")
