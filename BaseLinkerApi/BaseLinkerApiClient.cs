@@ -6,10 +6,10 @@ using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
+using System.Threading.RateLimiting;
 using System.Threading.Tasks;
 using BaseLinkerApi.Common;
 using BaseLinkerApi.Common.JsonConverters;
-using RateLimiter;
 
 [assembly:InternalsVisibleTo("BaseLinkerApi.Tests")]
 
@@ -48,7 +48,12 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
     }
         
     // The API doesn't return TooManyRequests but instead blocks your account so rate limit must be implemented client-side
-    public TimeLimiter TimeLimiter { get; set; } = TimeLimiter.GetFromMaxCountByInterval(100, TimeSpan.FromMinutes(1));
+    public FixedWindowRateLimiter TimeLimiter { get; set; } = new(new FixedWindowRateLimiterOptions
+    {
+        Window = TimeSpan.FromMinutes(1),
+        PermitLimit = 100
+    });
+    
     // ReSharper disable once MemberCanBePrivate.Global
     // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
     public bool UseRequestLimit { get; set; } = true;
@@ -83,8 +88,21 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
         return output;
     }
         
-    public Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
+    public async Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
     {
-        return UseRequestLimit ? TimeLimiter.Enqueue(() => SendImpl(request, cancellationToken), cancellationToken) : SendImpl(request, cancellationToken);
+        var sendTask = SendImpl(request, cancellationToken);
+        
+        if (!UseRequestLimit)
+        {
+            return await sendTask;
+        }
+
+        using var lease = await TimeLimiter.AcquireAsync(cancellationToken: cancellationToken);
+        if (!lease.IsAcquired)
+        {
+            await Task.Delay(TimeLimiter.ReplenishmentPeriod, cancellationToken);
+        }
+        
+        return await sendTask;
     }
 }
