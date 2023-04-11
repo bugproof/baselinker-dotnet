@@ -13,7 +13,8 @@ public static class ServiceCollectionExtensions
     public static void AddBaseLinker(this IServiceCollection services, Action<BaseLinkerOptions> configure)
     {
         services.AddOptions<BaseLinkerOptions>().Configure(configure);
-        services.AddHttpClient<IBaseLinkerApiClient, InjectableBaseLinkerApiClient>(); }
+        services.AddHttpClient<IBaseLinkerApiClient, InjectableBaseLinkerApiClient>();
+    }
 
     /// <summary>
     /// Registers IBaseLinkerApiClient

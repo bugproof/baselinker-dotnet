@@ -13,17 +13,23 @@ using System.Threading.Tasks;
 using BaseLinkerApi.Common;
 using BaseLinkerApi.Common.JsonConverters;
 
-[assembly:InternalsVisibleTo("BaseLinkerApi.Tests")]
+[assembly: InternalsVisibleTo("BaseLinkerApi.Tests")]
 
 namespace BaseLinkerApi;
 
 // ReSharper disable once UnusedTypeParameter
-public interface IRequest<TOutput> where TOutput : ResponseBase {}
-public interface IRequest : IRequest<ResponseBase> {}
+public interface IRequest<TOutput> where TOutput : ResponseBase
+{
+}
+
+public interface IRequest : IRequest<ResponseBase>
+{
+}
 
 public class BaseLinkerException : Exception
 {
-    public BaseLinkerException(string errorCode, string errorMessage, Exception? innerException = null) : base($"{errorCode} - {errorMessage}", innerException)
+    public BaseLinkerException(string errorCode, string errorMessage, Exception? innerException = null) : base(
+        $"{errorCode} - {errorMessage}", innerException)
     {
         ErrorCode = errorCode;
         ErrorMessage = errorMessage;
@@ -35,27 +41,28 @@ public class BaseLinkerException : Exception
 
 public interface IBaseLinkerApiClient
 {
-    Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase;
+    Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default)
+        where TOutput : ResponseBase;
 }
 
 public class BaseLinkerApiClient : IBaseLinkerApiClient
 {
     private readonly HttpClient _httpClient;
     private readonly string _token;
-        
+
     public BaseLinkerApiClient(HttpClient httpClient, string token)
     {
         _httpClient = httpClient;
         _token = token;
     }
-        
+
     // The API doesn't return TooManyRequests but instead blocks your account so rate limit must be implemented client-side
     public FixedWindowRateLimiter TimeLimiter { get; set; } = new(new FixedWindowRateLimiterOptions
     {
         Window = TimeSpan.FromMinutes(1),
         PermitLimit = 100
     });
-    
+
     // ReSharper disable once MemberCanBePrivate.Global
     // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
     public bool UseRequestLimit { get; set; } = true;
@@ -64,7 +71,8 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
     private async Task<TOutput> SendImpl<TOutput>(IRequest<TOutput> request,
         CancellationToken cancellationToken = default) where TOutput : ResponseBase
     {
-        var jsonSerializerOptions = new JsonSerializerOptions { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
+        var jsonSerializerOptions = new JsonSerializerOptions
+            { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
         jsonSerializerOptions.Converters.Add(new BoolConverter());
         jsonSerializerOptions.Converters.Add(new StringToNullableDecimalConverter());
         var data = new Dictionary<string, string>
@@ -75,18 +83,18 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
         };
 
 #if NET5_0_OR_GREATER
-    var content = new FormUrlEncodedContent(data);
+        var content = new FormUrlEncodedContent(data);
 #else
-    // Possible workaround for pre .NET 5 issue with FormUrlEncodedContent length limit
-    var items = data.Select(i => WebUtility.UrlEncode(i.Key) + "=" + WebUtility.UrlEncode(i.Value));
-    var content = new StringContent(string.Join("&", items), null, "application/x-www-form-urlencoded");
+        // Possible workaround for pre .NET 5 issue with FormUrlEncodedContent length limit
+        var items = data.Select(i => WebUtility.UrlEncode(i.Key) + "=" + WebUtility.UrlEncode(i.Value));
+        var content = new StringContent(string.Join("&", items), null, "application/x-www-form-urlencoded");
 #endif
-        
+
         var requestMessage = new HttpRequestMessage(HttpMethod.Post, "https://api.baselinker.com/connector.php")
         {
             Content = content
         };
-            
+
         requestMessage.Headers.Add("X-BLToken", _token);
 
         var responseMessage = await _httpClient.SendAsync(requestMessage, cancellationToken);
@@ -95,13 +103,15 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
         {
             throw new BaseLinkerException(output.ErrorCode!, output.ErrorMessage!);
         }
+
         return output;
     }
-        
-    public async Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request, CancellationToken cancellationToken = default) where TOutput : ResponseBase
+
+    public async Task<TOutput> SendAsync<TOutput>(IRequest<TOutput> request,
+        CancellationToken cancellationToken = default) where TOutput : ResponseBase
     {
         var sendTask = SendImpl(request, cancellationToken);
-        
+
         if (!UseRequestLimit)
         {
             return await sendTask;
@@ -112,7 +122,7 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
         {
             await Task.Delay(TimeLimiter.ReplenishmentPeriod, cancellationToken);
         }
-        
+
         return await sendTask;
     }
 }

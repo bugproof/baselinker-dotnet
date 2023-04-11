@@ -34,6 +34,12 @@ public class CreatePackageManual : IRequest<CreatePackageManual.Response>
     [JsonPropertyName("pickup_date")]
     [JsonConverter(typeof(UnixDateTimeOffsetConverter))]
     public DateTimeOffset PickupDate { get; set; }
+    
+    /// <summary>
+    /// (optional, false by default) Marks package as return shipment
+    /// </summary>
+    [JsonPropertyName("return_shipment")]
+    public bool ReturnShipment { get; set; }
         
     public class Response : ResponseBase
     {
