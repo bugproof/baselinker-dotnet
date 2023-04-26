@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using BaseLinkerApi.Common;
 
 namespace BaseLinkerApi.Requests.Orders;
@@ -12,6 +13,7 @@ public class GetOrderSources : IRequest<GetOrderSources.Response>
 {
     public class Response : ResponseBase
     {
+        [JsonPropertyName("sources")]
         public Dictionary<string, Dictionary<int, string>> Sources { get; set; }
     }
 }
