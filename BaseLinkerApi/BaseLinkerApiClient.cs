@@ -72,7 +72,7 @@ public class BaseLinkerApiClient : IBaseLinkerApiClient
         CancellationToken cancellationToken = default) where TOutput : ResponseBase
     {
         var jsonSerializerOptions = new JsonSerializerOptions
-            { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
+            { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull, AllowTrailingCommas = true };
         jsonSerializerOptions.Converters.Add(new BoolConverter());
         jsonSerializerOptions.Converters.Add(new StringToNullableDecimalConverter());
         var data = new Dictionary<string, string>

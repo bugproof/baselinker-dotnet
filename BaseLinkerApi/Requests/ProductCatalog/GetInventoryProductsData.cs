@@ -48,7 +48,7 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
         public Dictionary<string, int> Stock { get; set; }
             
         [JsonPropertyName("locations")]
-        public Dictionary<string, int> Locations { get; set; }
+        public Dictionary<string, string> Locations { get; set; }
     }
     
     public class Product
@@ -78,10 +78,10 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
         public double Star { get; set; }
 
         [JsonPropertyName("category_id")]
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
             
         [JsonPropertyName("manufacturer_id")]
-        public int ManufacturerId { get; set; }
+        public string ManufacturerId { get; set; }
             
         [JsonPropertyName("prices")]
         public Dictionary<int, decimal> Prices { get; set; }
@@ -90,7 +90,7 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
         public Dictionary<string, int> Stock { get; set; }
             
         [JsonPropertyName("locations")]
-        public Dictionary<string, int> Locations { get; set; }
+        public Dictionary<string, string> Locations { get; set; }
             
         [JsonPropertyName("text_fields")] 
         public Dictionary<string, object> TextFields { get; set; }
@@ -102,7 +102,7 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
         public decimal AverageLandedCost { get; set; }
 
         [JsonPropertyName("images")]
-        public List<string> Images { get; set; }
+        public Dictionary<string, string> Images { get; set; }
 
         [JsonPropertyName("links")]
         public Dictionary<string, Link> Links { get; set; }
