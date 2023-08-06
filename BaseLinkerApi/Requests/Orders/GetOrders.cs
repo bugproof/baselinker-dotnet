@@ -235,6 +235,9 @@ public class GetOrders : IRequest<GetOrders.Response>
         [JsonPropertyName("delivery_country")]
         public string DeliveryCountry { get; set; }
 
+        [JsonPropertyName("delivery_country_code")]
+        public string DeliveryCountryCode { get; set; }
+
         [JsonPropertyName("delivery_point_id")]
         public string DeliveryPointId { get; set; }
 
@@ -273,6 +276,9 @@ public class GetOrders : IRequest<GetOrders.Response>
 
         [JsonPropertyName("invoice_country")]
         public string InvoiceCountry { get; set; }
+
+        [JsonPropertyName("invoice_country_code")]
+        public string InvoiceCountryCode { get; set; }
 
         [JsonPropertyName("want_invoice")]
         public bool WantInvoice { get; set; }
