@@ -81,10 +81,10 @@ public class GetOrders : IRequest<GetOrders.Response>
         public string Storage { get; set; }
 
         [JsonPropertyName("storage_id")]
-        public string StorageId { get; set; }
+        public int StorageId { get; set; }
 
         [JsonPropertyName("order_product_id")]
-        public string OrderProductId { get; set; }
+        public int OrderProductId { get; set; }
 
         [JsonPropertyName("product_id")]
         public string ProductId { get; set; }
@@ -143,7 +143,7 @@ public class GetOrders : IRequest<GetOrders.Response>
         public int OrderId { get; set; }
 
         [JsonPropertyName("shop_order_id")]
-        public string ShopOrderId { get; set; }
+        public int ShopOrderId { get; set; }
 
         [JsonPropertyName("external_order_id")]
         public string ExternalOrderId { get; set; }
@@ -152,7 +152,7 @@ public class GetOrders : IRequest<GetOrders.Response>
         public string OrderSource { get; set; }
 
         [JsonPropertyName("order_source_id")]
-        public string OrderSourceId { get; set; }
+        public int OrderSourceId { get; set; }
 
         [JsonPropertyName("order_source_info")]
         public string OrderSourceInfo { get; set; }
