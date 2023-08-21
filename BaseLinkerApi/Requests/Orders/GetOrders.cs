@@ -73,7 +73,7 @@ public class GetOrders : IRequest<GetOrders.Response>
     /// The list of order source identifiers can be retrieved with getOrderSources method.
     /// </summary>
     [JsonPropertyName("filter_order_source_id")]
-    public string? FilterOrderSourceId { get; set; }
+    public int? FilterOrderSourceId { get; set; }
     
     public class Product
     {
