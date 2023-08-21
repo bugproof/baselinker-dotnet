@@ -15,7 +15,7 @@ public class GetSeries : IRequest<GetSeries.Response>
         /// Series numbering identifier
         /// </summary>
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Numbering type - possible values (INVOICE, RECEIPT)
