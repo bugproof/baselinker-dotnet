@@ -147,6 +147,9 @@ public class GetInvoices : IRequest<GetInvoices.Response>
 
             [JsonPropertyName("seller")]
             public string Seller { get; set; }
+            
+            [JsonPropertyName("issuer")]
+            public string Issuer { get; set; }
 
             [JsonPropertyName("payment")]
             public string Payment { get; set; }
