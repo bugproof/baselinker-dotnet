@@ -10,7 +10,7 @@ public class UpdateInventoryProductsPrices : IRequest<UpdateInventoryProductsPri
     public int InventoryId { get; set; }
 
     [JsonPropertyName("products")]
-    public Dictionary<string, decimal> ProductPrices { get; set; }
+    public Dictionary<string, Dictionary<string, decimal>> ProductPrices { get; set; }
 
     public class Response : ResponseBase
     {
