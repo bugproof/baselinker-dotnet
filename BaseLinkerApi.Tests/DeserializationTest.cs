@@ -1,4 +1,3 @@
-using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using BaseLinkerApi.Common.JsonConverters;
@@ -113,6 +112,15 @@ namespace BaseLinkerApi.Tests
     }
 }", JsonSerializerOptions);
             
+        }
+
+        [Fact]
+        public void DeserializationTest2023_08_16()
+        {
+            const string json = "{\"status\":\"SUCCESS\",\"orders\":[{\"order_id\":1,\"shop_order_id\":0,\"external_order_id\":\"asdasd\",\"order_source\":\"allegro\",\"order_source_id\":1,\"order_source_info\":\"-\",\"order_status_id\":1,\"confirmed\":true,\"date_confirmed\":1692264110,\"date_add\":1692263852,\"date_in_status\":1692264478,\"user_login\":\"a\",\"phone\":\"a\",\"email\":\"a\",\"user_comments\":\"\",\"admin_comments\":\"\",\"currency\":\"PLN\",\"payment_method\":\"a\",\"payment_method_cod\":\"0\",\"payment_done\":1.1,\"delivery_method\":\"a\",\"delivery_price\":0,\"delivery_package_module\":\"a\",\"delivery_package_nr\":\"1\",\"delivery_fullname\":\"a\",\"delivery_company\":\"\",\"delivery_address\":\"a\",\"delivery_city\":\"a\",\"delivery_state\":\"\",\"delivery_postcode\":\"a\",\"delivery_country_code\":\"PL\",\"delivery_point_id\":\"a\",\"delivery_point_name\":\"a\",\"delivery_point_address\":\"a\",\"delivery_point_postcode\":\"a\",\"delivery_point_city\":\"a\",\"invoice_fullname\":\"a\",\"invoice_company\":\"\",\"invoice_nip\":\"\",\"invoice_address\":\"a\",\"invoice_city\":\"a\",\"invoice_state\":\"\",\"invoice_postcode\":\"a\",\"invoice_country_code\":\"PL\",\"want_invoice\":\"0\",\"extra_field_1\":\"\",\"extra_field_2\":\"\",\"order_page\":\"a\",\"pick_state\":0,\"pack_state\":0,\"delivery_country\":\"Polska\",\"invoice_country\":\"Polska\",\"products\":[{\"storage\":\"db\",\"storage_id\":1,\"order_product_id\":1,\"product_id\":\"1\",\"variant_id\":\"0\",\"name\":\"z\",\"attributes\":\"\",\"sku\":\"s\",\"ean\":\"a\",\"location\":\"\",\"warehouse_id\":1,\"auction_id\":\"1\",\"price_brutto\":1.1,\"tax_rate\":23,\"quantity\":1,\"weight\":1.1,\"bundle_id\":0}]}]}";
+
+            var response = JsonSerializer.Deserialize<Requests.Orders.GetOrders.Response>(json, JsonSerializerOptions);
+            Assert.NotNull(response);
         }
     }
 }
