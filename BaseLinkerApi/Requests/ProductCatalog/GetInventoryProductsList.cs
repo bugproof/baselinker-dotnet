@@ -80,6 +80,9 @@ public class GetInventoryProductsList : IRequest<GetInventoryProductsList.Respon
 
     public class Product
     {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+        
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
             
