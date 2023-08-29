@@ -19,6 +19,12 @@ public class AddInvoice : IRequest<AddInvoice.Response>
     /// </summary>
     [JsonPropertyName("series_id")]
     public int SeriesId { get; set; }
+    
+    /// <summary>
+    /// (optional) VAT rate (refer to the documentation for usage)
+    /// </summary>
+    [JsonPropertyName("vat_rate")] 
+    public object? VatRate { get; set; }
         
     public class Response : ResponseBase
     {

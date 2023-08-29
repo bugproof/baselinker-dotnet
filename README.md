@@ -2,7 +2,7 @@
 
 # BaseLinker.com API client for .NET
 [![NuGet](https://img.shields.io/nuget/v/BaseLinker)](https://www.nuget.org/packages/BaseLinker/) 
-[![Conforms to the update](https://img.shields.io/badge/update-2023--08--16-brightgreen)](https://api.baselinker.com/index.php?changelog)
+[![Conforms to the update](https://img.shields.io/badge/update-2023--08--23-brightgreen)](https://api.baselinker.com/index.php?changelog)
 
 This library implements all methods and correctly handles API request limits. 
 Pull requests and bug reports are always welcome. Breaking changes are expected.

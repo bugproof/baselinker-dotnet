@@ -33,4 +33,10 @@ public class SetOrderReceipt : IRequest
     /// </summary>
     [JsonPropertyName("printer_error")] 
     public bool? PrinterError { get; set; }
+    
+    /// <summary>
+    /// (optional) Printer name
+    /// </summary>
+    [JsonPropertyName("printer_name")] 
+    public string? PrinterName { get; set; }
 }
