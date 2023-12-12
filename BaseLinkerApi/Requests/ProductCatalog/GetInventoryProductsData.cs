@@ -78,10 +78,10 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
         public double Star { get; set; }
 
         [JsonPropertyName("category_id")]
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
             
         [JsonPropertyName("manufacturer_id")]
-        public string ManufacturerId { get; set; }
+        public int ManufacturerId { get; set; }
             
         [JsonPropertyName("prices")]
         public Dictionary<int, decimal> Prices { get; set; }
