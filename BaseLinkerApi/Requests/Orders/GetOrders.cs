@@ -292,7 +292,7 @@ public class GetOrders : IRequest<GetOrders.Response>
         public string ExtraField2 { get; set; }
         
         [JsonPropertyName("custom_extra_fields")]
-        public Dictionary<object, object> CustomExtraFields { get; set; }
+        public Dictionary<string, object> CustomExtraFields { get; set; }
 
         [JsonPropertyName("order_page")]
         public string OrderPage { get; set; }
