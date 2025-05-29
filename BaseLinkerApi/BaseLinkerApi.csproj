@@ -8,12 +8,12 @@
         <AssemblyName>BaseLinker</AssemblyName>
         
         <PackageId>BaseLinker</PackageId>
-        <Description>BaseLinker.com API client library</Description>
+        <Description>Base.com API client library</Description>
         <PackageVersion>0.5.2</PackageVersion>
         <PackageTags>ecommerce;e-commerce;baselinker</PackageTags>
-        <RepositoryUrl>https://github.com/bugproof/BaseLinkerApi</RepositoryUrl>
+        <RepositoryUrl>https://github.com/bugproof/baselinker-dotnet</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageIconUrl>https://baselinker.com/assets/images/favicons/apple-icon-120x120.png</PackageIconUrl>
+        <PackageIconUrl>https://base.com/assets/images/favicons/base.com/apple-touch-icon-120x120.png</PackageIconUrl>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
