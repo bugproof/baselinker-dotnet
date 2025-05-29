@@ -1,4 +1,4 @@
-![](https://baselinker.com/assets/images/favicons/apple-icon-57x57.png)
+![](https://base.com/assets/images/favicons/base.com/apple-touch-icon-57x57.png)
 
 # Base.com API client for .NET
 [![NuGet](https://img.shields.io/nuget/v/BaseLinker)](https://www.nuget.org/packages/BaseLinker/)
