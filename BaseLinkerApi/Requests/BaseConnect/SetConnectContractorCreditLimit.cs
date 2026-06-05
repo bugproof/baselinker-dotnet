@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json.Serialization;
 using BaseLinkerApi.Common;
 
@@ -11,8 +12,15 @@ public class SetConnectContractorCreditLimit : IRequest<SetConnectContractorCred
     /// <summary>
     /// Contractor ID
     /// </summary>
+    [Obsolete("Deprecated (changelog 2026-02-16). Use ConnectContractorId instead.")]
     [JsonPropertyName("contractor_id")]
-    public int ContractorId { get; set; }
+    public int? ContractorId { get; set; }
+
+    /// <summary>
+    /// Contractor ID
+    /// </summary>
+    [JsonPropertyName("connect_contractor_id")]
+    public int ConnectContractorId { get; set; }
 
     /// <summary>
     /// New limit value

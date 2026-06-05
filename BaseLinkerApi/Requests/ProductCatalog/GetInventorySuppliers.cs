@@ -76,6 +76,12 @@ public class GetInventorySuppliers : IRequest<GetInventorySuppliers.Response>
         /// </summary>
         [JsonPropertyName("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// (optional) Supplier tax identification number
+        /// </summary>
+        [JsonPropertyName("tax_no")]
+        public string TaxNo { get; set; }
     }
 
     public class Response : ResponseBase
