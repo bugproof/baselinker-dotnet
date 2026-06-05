@@ -320,16 +320,16 @@ public class GetOrders : IRequest<GetOrders.Response>
         public string OrderPage { get; set; }
 
         /// <summary>
-        /// Flag indicating the status of the order products collection (1 - all products collected, 0 - not all). API field: "pick_state".
+        /// Flag indicating the status of the order products collection (1 - all products collected, 0 - not all).
         /// </summary>
         [JsonPropertyName("pick_state")]
-        public int PickStatus { get; set; }
+        public int PickState { get; set; }
 
         /// <summary>
-        /// Flag indicating the status of the order products packing (1 - all products packed, 0 - not all). API field: "pack_state".
+        /// Flag indicating the status of the order products packing (1 - all products packed, 0 - not all).
         /// </summary>
         [JsonPropertyName("pack_state")]
-        public int PackStatus { get; set; }
+        public int PackState { get; set; }
 
         /// <summary>
         /// The commissions that the marketplace charges for an order. Returned only when commission data is requested (with_commission flag enabled).

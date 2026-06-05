@@ -9,7 +9,7 @@
 
         <PackageId>BaseLinker</PackageId>
         <Description>Base.com API client library</Description>
-        <PackageVersion>0.6.0</PackageVersion>
+        <PackageVersion>1.0.0</PackageVersion>
         <PackageTags>ecommerce;e-commerce;baselinker</PackageTags>
         <RepositoryUrl>https://github.com/bugproof/baselinker-dotnet</RepositoryUrl>
         <RepositoryType>git</RepositoryType>

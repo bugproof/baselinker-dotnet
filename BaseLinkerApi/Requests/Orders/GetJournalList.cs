@@ -25,10 +25,10 @@ public class GetJournalList : IRequest<GetJournalList.Response>
         public class Log
         {
             /// <summary>
-            /// Event ID. API field: "id".
+            /// Event ID
             /// </summary>
             [JsonPropertyName("id")]
-            public int LogId { get; set; }
+            public int Id { get; set; }
 
             /// <summary>
             /// Event type: 1 - Order creation, 2 - DOF download (order confirmation), 3 - Payment of the order,
