@@ -119,6 +119,12 @@ public class GetInventoryDocumentItems : IRequest<GetInventoryDocumentItems.Resp
         /// </summary>
         [JsonPropertyName("comments")]
         public string Comments { get; set; }
+
+        /// <summary>
+        /// The target location (only for Internal Transfer documents)
+        /// </summary>
+        [JsonPropertyName("target_location_name")]
+        public string TargetLocationName { get; set; }
     }
 
     public class Response : ResponseBase

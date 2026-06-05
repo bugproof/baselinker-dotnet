@@ -42,6 +42,12 @@ public class AddInventoryDocumentItems : IRequest<AddInventoryDocumentItems.Resp
         public string? LocationName { get; set; }
 
         /// <summary>
+        /// (optional) Target storage location (only for Internal Transfer documents)
+        /// </summary>
+        [JsonPropertyName("target_location_name")]
+        public string? TargetLocationName { get; set; }
+
+        /// <summary>
         /// (optional) The expiry date. Date format YYYY-MM-DD (ISO 8601)
         /// </summary>
         [JsonPropertyName("expiry_date")]
