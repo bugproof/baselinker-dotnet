@@ -21,6 +21,33 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
     [JsonPropertyName("products")]
     public List<int> Products { get; set; }
 
+    /// <summary>
+    /// (optional) Include ERP units in the response. Only available for inventories with purchase cost calculations system different than AVCO.
+    /// </summary>
+    [JsonPropertyName("include_erp_units")]
+    public bool? IncludeErpUnits { get; set; }
+
+    public class StockErpUnit
+    {
+        /// <summary>
+        /// Quantity of given ERP unit
+        /// </summary>
+        [JsonPropertyName("quantity")]
+        public int Quantity { get; set; }
+
+        /// <summary>
+        /// Purchase cost of given ERP unit
+        /// </summary>
+        [JsonPropertyName("purchase_cost")]
+        public double PurchaseCost { get; set; }
+
+        /// <summary>
+        /// Expiry date of given ERP unit
+        /// </summary>
+        [JsonPropertyName("expiry_date")]
+        public string ExpiryDate { get; set; }
+    }
+
     public class Link
     {
         [JsonPropertyName("product_id")]
@@ -109,6 +136,12 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
             
         [JsonPropertyName("variants")]
         public Dictionary<int, Variant> Variants { get; set; }
+
+        /// <summary>
+        /// A list containing products stock erp units, where the key is the warehouse ID and value is a list of units in given warehouse.
+        /// </summary>
+        [JsonPropertyName("stock_erp_units")]
+        public Dictionary<string, List<StockErpUnit>> StockErpUnits { get; set; }
     }
         
     public class Response : ResponseBase
