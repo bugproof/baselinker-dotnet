@@ -24,10 +24,10 @@ public class GetConnectIntegrations : IRequest<GetConnectIntegrations.Response>
         public string Name { get; set; }
 
         /// <summary>
-        /// Integration options
+        /// Integration options. Raw JSON passthrough (deserializes to a <see cref="System.Text.Json.JsonElement"/>).
         /// </summary>
         [JsonPropertyName("settings")]
-        public Dictionary<string, object> Settings { get; set; }
+        public object Settings { get; set; }
     }
 
     public class Response : ResponseBase

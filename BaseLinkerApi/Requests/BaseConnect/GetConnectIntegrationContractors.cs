@@ -30,16 +30,16 @@ public class GetConnectIntegrationContractors : IRequest<GetConnectIntegrationCo
         public string Name { get; set; }
 
         /// <summary>
-        /// Contractor credit summary data
+        /// Contractor credit summary data. Raw JSON passthrough (deserializes to a <see cref="System.Text.Json.JsonElement"/>).
         /// </summary>
         [JsonPropertyName("credit_data")]
-        public Dictionary<string, object> CreditData { get; set; }
+        public object CreditData { get; set; }
 
         /// <summary>
-        /// Contractor options
+        /// Contractor options. Raw JSON passthrough (deserializes to a <see cref="System.Text.Json.JsonElement"/>).
         /// </summary>
         [JsonPropertyName("settings")]
-        public Dictionary<string, object> Settings { get; set; }
+        public object Settings { get; set; }
     }
 
     public class Response : ResponseBase
