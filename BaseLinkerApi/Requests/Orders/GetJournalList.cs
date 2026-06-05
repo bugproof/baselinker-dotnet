@@ -24,7 +24,10 @@ public class GetJournalList : IRequest<GetJournalList.Response>
     {
         public class Log
         {
-            [JsonPropertyName("log_id")]
+            /// <summary>
+            /// Event ID. API field: "id".
+            /// </summary>
+            [JsonPropertyName("id")]
             public int LogId { get; set; }
 
             /// <summary>

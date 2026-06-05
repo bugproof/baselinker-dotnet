@@ -319,10 +319,16 @@ public class GetOrders : IRequest<GetOrders.Response>
         [JsonPropertyName("order_page")]
         public string OrderPage { get; set; }
 
-        [JsonPropertyName("pick_status")]
+        /// <summary>
+        /// Flag indicating the status of the order products collection (1 - all products collected, 0 - not all). API field: "pick_state".
+        /// </summary>
+        [JsonPropertyName("pick_state")]
         public int PickStatus { get; set; }
 
-        [JsonPropertyName("pack_status")]
+        /// <summary>
+        /// Flag indicating the status of the order products packing (1 - all products packed, 0 - not all). API field: "pack_state".
+        /// </summary>
+        [JsonPropertyName("pack_state")]
         public int PackStatus { get; set; }
 
         /// <summary>
