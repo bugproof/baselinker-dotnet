@@ -203,6 +203,14 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     public List<string> Images { get; set; }
 
     /// <summary>
+    /// A list of product videos (maximum 6), where the key is the 0-based video position (0-5).
+    /// Supported formats: MP4, WEBM (max 15 MB). The value can be a URL prefixed with "url:", base64-encoded binary data
+    /// prefixed with "data:", or an empty string "" to delete the video at the given position.
+    /// </summary>
+    [JsonPropertyName("videos")]
+    public Dictionary<int, string> Videos { get; set; }
+
+    /// <summary>
     /// An array containing product links to external warehouses (e.g. shops, wholesalers).
     /// Each element of the array is a list in which the key is the identifier of the external warehouse in the format "[type:shop|warehouse]_[id:int]". (e.g. "shop_2445").
     /// The warehouse identifiers can be retrieved with the getStoragesList method.

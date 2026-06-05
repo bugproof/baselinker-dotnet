@@ -179,6 +179,12 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
         [JsonPropertyName("images")]
         public Dictionary<string, string> Images { get; set; }
 
+        /// <summary>
+        /// A list of product videos where the key is the 1-based video position (1-6) and the value is the video URL.
+        /// </summary>
+        [JsonPropertyName("videos")]
+        public Dictionary<int, string> Videos { get; set; }
+
         [JsonPropertyName("links")]
         public Dictionary<string, Link> Links { get; set; }
             
