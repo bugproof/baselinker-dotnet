@@ -303,6 +303,12 @@ public class GetOrders : IRequest<GetOrders.Response>
         [JsonPropertyName("pack_status")]
         public int PackStatus { get; set; }
 
+        /// <summary>
+        /// The commissions that the marketplace charges for an order. Returned only when commission data is requested (with_commission flag enabled).
+        /// </summary>
+        [JsonPropertyName("commissions")]
+        public object Commissions { get; set; }
+
         [JsonPropertyName("products")]
         public List<Product> Products { get; set; }
         
