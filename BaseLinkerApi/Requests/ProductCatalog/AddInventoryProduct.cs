@@ -29,6 +29,21 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
         [JsonPropertyName("variant_id")]
         public int VariantId { get; set; }
     }
+
+    public class AdditionalEan
+    {
+        /// <summary>
+        /// EAN number
+        /// </summary>
+        [JsonPropertyName("ean")]
+        public string Ean { get; set; }
+
+        /// <summary>
+        /// Quantity of product with given EAN number
+        /// </summary>
+        [JsonPropertyName("quantity")]
+        public int Quantity { get; set; }
+    }
         
     /// <summary>
     /// Catalog ID. The list of identifiers can be retrieved using the method getInventories. (inventory_id field).
@@ -65,6 +80,19 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     /// </summary>
     [JsonPropertyName("ean")]
     public string Ean { get; set; }
+
+    /// <summary>
+    /// A list containing additional EAN numbers. Each element should contain an EAN number and the quantity of product with the given EAN number.
+    /// </summary>
+    [JsonPropertyName("ean_additional")]
+    public List<AdditionalEan> EanAdditional { get; set; }
+
+    /// <summary>
+    /// A list containing tag names. Providing an empty list removes all existing tags from the product;
+    /// omitting the field leaves existing tags unchanged.
+    /// </summary>
+    [JsonPropertyName("tags")]
+    public List<string> Tags { get; set; }
 
     /// <summary>
     /// Product SKU number.

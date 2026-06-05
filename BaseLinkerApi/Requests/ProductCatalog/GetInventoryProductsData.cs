@@ -27,6 +27,27 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
     [JsonPropertyName("include_erp_units")]
     public bool? IncludeErpUnits { get; set; }
 
+    /// <summary>
+    /// (optional) Include additional EANs in response. User can set additional EANs for product, to work with products cases (4-pack etc.) or different regional codes for the same product.
+    /// </summary>
+    [JsonPropertyName("include_additional_eans")]
+    public bool? IncludeAdditionalEans { get; set; }
+
+    public class AdditionalEan
+    {
+        /// <summary>
+        /// EAN number
+        /// </summary>
+        [JsonPropertyName("ean")]
+        public string Ean { get; set; }
+
+        /// <summary>
+        /// Quantity of product with given EAN number
+        /// </summary>
+        [JsonPropertyName("quantity")]
+        public int Quantity { get; set; }
+    }
+
     public class StockErpUnit
     {
         /// <summary>
@@ -82,10 +103,22 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
     {
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
-            
+
+        /// <summary>
+        /// A list containing additional EAN numbers (returned only if include_additional_eans is set to true).
+        /// </summary>
+        [JsonPropertyName("ean_additional")]
+        public List<AdditionalEan> EanAdditional { get; set; }
+
+        /// <summary>
+        /// A list of product tags.
+        /// </summary>
+        [JsonPropertyName("tags")]
+        public List<string> Tags { get; set; }
+
         [JsonPropertyName("sku")]
         public string Sku { get; set; }
-            
+
         [JsonPropertyName("tax_rate")]
         public double TaxRate { get; set; }
             
