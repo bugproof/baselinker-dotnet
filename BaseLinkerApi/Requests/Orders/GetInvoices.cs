@@ -44,11 +44,17 @@ public class GetInvoices : IRequest<GetInvoices.Response>
     public int? SeriesId { get; set; }
         
     /// <summary>
-    /// (optional, true by default) Download external invoices as well.
+    /// (optional) If set to 'false' then omits from the results invoices that already have an external invoice file uploaded by addOrderInvoiceFile method (useful for ERP integrations uploading invoice files to BaseLinker)
     /// </summary>
     [JsonPropertyName("get_external_invoices")]
     public bool? GetExternalInvoices { get; set; }
-        
+
+    /// <summary>
+    /// (optional) If set to 'true' then includes government data fields in the response: gov_id, gov_date, gov_status.
+    /// </summary>
+    [JsonPropertyName("get_government_data")]
+    public bool? GetGovernmentData { get; set; }
+
     public class Response : ResponseBase
     {
         public class Item
@@ -187,7 +193,26 @@ public class GetInvoices : IRequest<GetInvoices.Response>
 
             [JsonPropertyName("items")]
             public List<Item> Items { get; set; }
-            
+
+            /// <summary>
+            /// Government invoice identifier (returned when get_government_data is true).
+            /// </summary>
+            [JsonPropertyName("gov_id")]
+            public string GovId { get; set; }
+
+            /// <summary>
+            /// Government invoice date in Unix time format (returned when get_government_data is true).
+            /// </summary>
+            [JsonPropertyName("gov_date")]
+            [JsonConverter(typeof(UnixDateTimeOffsetConverter))]
+            public DateTimeOffset? GovDate { get; set; }
+
+            /// <summary>
+            /// Government invoice status: 1 = Sent, 2 = Accepted, 3 = Rejected, 5 = Offline mode (returned when get_government_data is true).
+            /// </summary>
+            [JsonPropertyName("gov_status")]
+            public int? GovStatus { get; set; }
+
             /// <summary>
             /// Additional not parsed data
             /// </summary>
