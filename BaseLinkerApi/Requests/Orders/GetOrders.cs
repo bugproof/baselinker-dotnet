@@ -47,6 +47,18 @@ public class GetOrders : IRequest<GetOrders.Response>
     /// </summary>
     [JsonPropertyName("include_custom_extra_fields")]
     public bool? IncludeCustomExtraFields { get; set; }
+
+    /// <summary>
+    /// (optional, false by default) Download orders with commissions information. If set to true, the response will contain additional "commissions" field.
+    /// </summary>
+    [JsonPropertyName("include_commissions")]
+    public bool? IncludeCommissions { get; set; }
+
+    /// <summary>
+    /// (optional, false by default) Base Connect and contractor data. If set to true, the response will contain additional "connect_data" field.
+    /// </summary>
+    [JsonPropertyName("include_connect_data")]
+    public bool? IncludeConnectData { get; set; }
     
     /// <summary>
     /// (optional) The status identifier from which orders are to be collected. Leave blank to download orders from all statuses.
@@ -308,6 +320,12 @@ public class GetOrders : IRequest<GetOrders.Response>
         /// </summary>
         [JsonPropertyName("commissions")]
         public object Commissions { get; set; }
+
+        /// <summary>
+        /// Data from Base Connect linked to the order. Returned only when include_connect_data is set to true.
+        /// </summary>
+        [JsonPropertyName("connect_data")]
+        public object ConnectData { get; set; }
 
         [JsonPropertyName("products")]
         public List<Product> Products { get; set; }

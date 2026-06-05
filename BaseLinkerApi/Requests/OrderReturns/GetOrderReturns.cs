@@ -64,6 +64,12 @@ public class GetOrderReturns : IRequest<GetOrderReturns.Response>
     [JsonPropertyName("include_custom_extra_fields")]
     public bool? IncludeCustomExtraFields { get; set; }
 
+    /// <summary>
+    /// (optional, false by default) Base Connect and contractor data. If set to true, the response will contain additional "connect_data" field.
+    /// </summary>
+    [JsonPropertyName("include_connect_data")]
+    public bool? IncludeConnectData { get; set; }
+
     public class Product
     {
         [JsonPropertyName("order_product_id")]
@@ -219,6 +225,12 @@ public class GetOrderReturns : IRequest<GetOrderReturns.Response>
 
         [JsonPropertyName("delivery_package_nr")]
         public string DeliveryPackageNr { get; set; }
+
+        /// <summary>
+        /// Data from Base Connect linked to the order return. Returned only when include_connect_data is set to true.
+        /// </summary>
+        [JsonPropertyName("connect_data")]
+        public object ConnectData { get; set; }
 
         [JsonPropertyName("products")]
         public List<Product> Products { get; set; }
