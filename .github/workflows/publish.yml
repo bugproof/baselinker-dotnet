@@ -40,3 +40,13 @@ jobs:
 
           # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
           # INCLUDE_SYMBOLS: false
+
+      - name: Publish DI extensions on version change
+        id: publish_nuget_di
+        uses: alirezanet/publish-nuget@v3.0.4
+        with:
+          PROJECT_FILE_PATH: BaseLinkerApi.Extensions.DependencyInjection/BaseLinkerApi.Extensions.DependencyInjection.csproj
+          PACKAGE_NAME: BaseLinker.Extensions.DependencyInjection
+          VERSION_REGEX: ^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$
+          TAG_COMMIT: false
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
