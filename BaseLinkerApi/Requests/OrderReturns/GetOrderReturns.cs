@@ -181,6 +181,12 @@ public class GetOrderReturns : IRequest<GetOrderReturns.Response>
         [JsonPropertyName("refunded")]
         public string Refunded { get; set; }
 
+        /// <summary>
+        /// The actual amount refunded to the buyer.
+        /// </summary>
+        [JsonPropertyName("refund_done")]
+        public double RefundDone { get; set; }
+
         [JsonPropertyName("email")]
         public string Email { get; set; }
 
