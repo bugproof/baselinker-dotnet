@@ -124,6 +124,12 @@ public class GetOrderReturns : IRequest<GetOrderReturns.Response>
         public int ReturnReasonId { get; set; }
 
         /// <summary>
+        /// Customer comment about return reason
+        /// </summary>
+        [JsonPropertyName("return_reason_comment")]
+        public string ReturnReasonComment { get; set; }
+
+        /// <summary>
         /// Additional not parsed data
         /// </summary>
         [JsonExtensionData] public Dictionary<string, JsonElement>? ExtensionsData { get; set; }

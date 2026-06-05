@@ -82,7 +82,13 @@ public class GetInventoryProductsList : IRequest<GetInventoryProductsList.Respon
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
-        
+
+        /// <summary>
+        /// Product parent ID. Returns 0 for main products, or the main product ID for variants.
+        /// </summary>
+        [JsonPropertyName("parent_id")]
+        public int ParentId { get; set; }
+
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
             

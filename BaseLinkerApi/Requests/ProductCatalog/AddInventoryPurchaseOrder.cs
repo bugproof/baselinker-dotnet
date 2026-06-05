@@ -1,5 +1,7 @@
+using System;
 using System.Text.Json.Serialization;
 using BaseLinkerApi.Common;
+using BaseLinkerApi.Common.JsonConverters;
 
 namespace BaseLinkerApi.Requests.ProductCatalog;
 
@@ -49,6 +51,13 @@ public class AddInventoryPurchaseOrder : IRequest<AddInventoryPurchaseOrder.Resp
     /// </summary>
     [JsonPropertyName("invoice_no")]
     public string? InvoiceNo { get; set; }
+
+    /// <summary>
+    /// (optional) Expected delivery date (unix timestamp) set when creating the purchase order.
+    /// </summary>
+    [JsonPropertyName("date_delivery_expected")]
+    [JsonConverter(typeof(UnixDateTimeOffsetConverter))]
+    public DateTimeOffset? DateDeliveryExpected { get; set; }
 
     public class Response : ResponseBase
     {
