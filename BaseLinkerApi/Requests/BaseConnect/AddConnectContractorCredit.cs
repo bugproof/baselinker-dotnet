@@ -10,8 +10,8 @@ public class AddConnectContractorCredit : IRequest
     /// <summary>
     /// Contractor ID
     /// </summary>
-    [JsonPropertyName("contractor_id")]
-    public int ContractorId { get; set; }
+    [JsonPropertyName("connect_contractor_id")]
+    public int ConnectContractorId { get; set; }
 
     /// <summary>
     /// Trade credit amount

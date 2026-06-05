@@ -14,8 +14,8 @@ public class GetConnectIntegrations : IRequest<GetConnectIntegrations.Response>
         /// <summary>
         /// Connect integration ID
         /// </summary>
-        [JsonPropertyName("id")]
-        public int Id { get; set; }
+        [JsonPropertyName("connect_integration_id")]
+        public int ConnectIntegrationId { get; set; }
 
         /// <summary>
         /// Integration name

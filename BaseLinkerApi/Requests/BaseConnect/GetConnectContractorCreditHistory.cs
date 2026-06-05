@@ -14,19 +14,16 @@ public class GetConnectContractorCreditHistory : IRequest<GetConnectContractorCr
     /// <summary>
     /// Contractor ID
     /// </summary>
-    [JsonPropertyName("contractor_id")]
-    public int ContractorId { get; set; }
-
-    [JsonPropertyName("token_id")]
-    public int TokenId { get; set; }
+    [JsonPropertyName("connect_contractor_id")]
+    public int ConnectContractorId { get; set; }
 
     public class CreditEntry
     {
         /// <summary>
         /// Entry ID
         /// </summary>
-        [JsonPropertyName("id")]
-        public int Id { get; set; }
+        [JsonPropertyName("credit_entry_id")]
+        public int CreditEntryId { get; set; }
 
         /// <summary>
         /// Entry add date in unix timestamp format

@@ -9,16 +9,19 @@ namespace BaseLinkerApi.Requests.BaseConnect;
 /// </summary>
 public class GetConnectIntegrationContractors : IRequest<GetConnectIntegrationContractors.Response>
 {
-    [JsonPropertyName("token_id")]
-    public int TokenId { get; set; }
+    /// <summary>
+    /// Connect integration ID
+    /// </summary>
+    [JsonPropertyName("connect_integration_id")]
+    public int ConnectIntegrationId { get; set; }
 
     public class Contractor
     {
         /// <summary>
         /// Contractor ID
         /// </summary>
-        [JsonPropertyName("id")]
-        public int Id { get; set; }
+        [JsonPropertyName("connect_contractor_id")]
+        public int ConnectContractorId { get; set; }
 
         /// <summary>
         /// Contractor name
