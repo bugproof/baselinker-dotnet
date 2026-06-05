@@ -88,7 +88,10 @@ public class GetInventoryProductsList : IRequest<GetInventoryProductsList.Respon
             
         [JsonPropertyName("sku")]
         public string Sku { get; set; }
-            
+
+        [JsonPropertyName("asin")]
+        public string Asin { get; set; }
+
         [JsonPropertyName("name")]
         public string Name { get; set; }
             

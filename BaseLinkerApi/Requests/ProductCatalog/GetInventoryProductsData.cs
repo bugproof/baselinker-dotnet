@@ -82,7 +82,10 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
     {
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
-            
+
+        [JsonPropertyName("asin")]
+        public string Asin { get; set; }
+
         [JsonPropertyName("sku")]
         public string Sku { get; set; }
             
@@ -109,6 +112,12 @@ public class GetInventoryProductsData : IRequest<GetInventoryProductsData.Respon
         /// </summary>
         [JsonPropertyName("ean_additional")]
         public List<AdditionalEan> EanAdditional { get; set; }
+
+        /// <summary>
+        /// Product ASIN number (primary ASIN).
+        /// </summary>
+        [JsonPropertyName("asin")]
+        public string Asin { get; set; }
 
         /// <summary>
         /// A list of product tags.

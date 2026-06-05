@@ -29,21 +29,27 @@ public class GetExternalStorageProductsData : IRequest<GetExternalStorageProduct
         [JsonPropertyName("price")]
         public decimal Price { get; set; }
             
-        [JsonPropertyName("quantity")] 
+        [JsonPropertyName("quantity")]
         public int Quantity { get; set; }
-            
+
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
+
+        [JsonPropertyName("asin")]
+        public string Asin { get; set; }
     }
         
     public class Product
     {
         [JsonPropertyName("product_id")]
         public string ProductId { get; set; }
-            
+
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
-            
+
+        [JsonPropertyName("asin")]
+        public string Asin { get; set; }
+
         [JsonPropertyName("sku")]
         public string Sku { get; set; }
             

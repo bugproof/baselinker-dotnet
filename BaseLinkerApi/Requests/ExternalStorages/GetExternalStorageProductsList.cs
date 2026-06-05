@@ -26,7 +26,13 @@ public class GetExternalStorageProductsList : IRequest<GetExternalStorageProduct
         
     [JsonPropertyName("filter_ean")]
     public string? FilterEan { get; set; }
-        
+
+    /// <summary>
+    /// (optional) limiting results to a specific asin
+    /// </summary>
+    [JsonPropertyName("filter_asin")]
+    public string? FilterAsin { get; set; }
+
     [JsonPropertyName("filter_sku")]
     public string? FilterSku { get; set; }
         
@@ -58,6 +64,9 @@ public class GetExternalStorageProductsList : IRequest<GetExternalStorageProduct
 
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
+
+        [JsonPropertyName("asin")]
+        public string Asin { get; set; }
 
         [JsonPropertyName("sku")]
         public string Sku { get; set; }

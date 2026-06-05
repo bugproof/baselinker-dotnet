@@ -115,7 +115,10 @@ public class GetOrders : IRequest<GetOrders.Response>
 
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
-            
+
+        [JsonPropertyName("asin")]
+        public string Asin { get; set; }
+
         [JsonPropertyName("location")]
         public string Location { get; set; }
             

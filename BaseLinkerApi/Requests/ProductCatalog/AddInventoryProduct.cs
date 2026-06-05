@@ -88,6 +88,12 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     public List<AdditionalEan> EanAdditional { get; set; }
 
     /// <summary>
+    /// Product ASIN number.
+    /// </summary>
+    [JsonPropertyName("asin")]
+    public string Asin { get; set; }
+
+    /// <summary>
     /// A list containing tag names. Providing an empty list removes all existing tags from the product;
     /// omitting the field leaves existing tags unchanged.
     /// </summary>
