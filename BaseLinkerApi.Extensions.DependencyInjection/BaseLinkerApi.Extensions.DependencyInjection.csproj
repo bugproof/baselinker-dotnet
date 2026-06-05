@@ -9,8 +9,8 @@
         <AssemblyName>BaseLinker.Extensions.DependencyInjection</AssemblyName>
 
         <PackageId>BaseLinker.Extensions.DependencyInjection</PackageId>
-        <Description>BaseLinker.com API client library (dependency injection extensions)</Description>
-        <PackageVersion>0.3.0</PackageVersion>
+        <Description>Base.com API client library (dependency injection extensions)</Description>
+        <PackageVersion>1.0.0</PackageVersion>
         <PackageTags>ecommerce;e-commerce;baselinker</PackageTags>
         <RepositoryUrl>https://github.com/bugproof/baselinker-dotnet</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
