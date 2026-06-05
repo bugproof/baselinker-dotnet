@@ -29,6 +29,21 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
         [JsonPropertyName("variant_id")]
         public int VariantId { get; set; }
     }
+
+    public class AdditionalEan
+    {
+        /// <summary>
+        /// EAN number
+        /// </summary>
+        [JsonPropertyName("ean")]
+        public string Ean { get; set; }
+
+        /// <summary>
+        /// Quantity of product with given EAN number
+        /// </summary>
+        [JsonPropertyName("quantity")]
+        public int Quantity { get; set; }
+    }
         
     /// <summary>
     /// Catalog ID. The list of identifiers can be retrieved using the method getInventories. (inventory_id field).
@@ -67,6 +82,25 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     public string Ean { get; set; }
 
     /// <summary>
+    /// A list containing additional EAN numbers. Each element should contain an EAN number and the quantity of product with the given EAN number.
+    /// </summary>
+    [JsonPropertyName("ean_additional")]
+    public List<AdditionalEan> EanAdditional { get; set; }
+
+    /// <summary>
+    /// Product ASIN number.
+    /// </summary>
+    [JsonPropertyName("asin")]
+    public string Asin { get; set; }
+
+    /// <summary>
+    /// A list containing tag names. Providing an empty list removes all existing tags from the product;
+    /// omitting the field leaves existing tags unchanged.
+    /// </summary>
+    [JsonPropertyName("tags")]
+    public List<string> Tags { get; set; }
+
+    /// <summary>
     /// Product SKU number.
     /// </summary>
     [JsonPropertyName("sku")]
@@ -101,6 +135,13 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     /// </summary>
     [JsonPropertyName("length")]
     public double Length { get; set; }
+
+    /// <summary>
+    /// Product average cost. If storage documents are turned off, this field sets product average cost.
+    /// If storage documents are turned on, a value in this field can be set in two cases: while creating a new product or when a current average cost is set to 0.
+    /// </summary>
+    [JsonPropertyName("average_cost")]
+    public decimal? AverageCost { get; set; }
 
     /// <summary>
     /// Product star type. It takes from 0 to 5 values. 0 means no starring.
@@ -160,6 +201,14 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     /// </summary>
     [JsonPropertyName("images")]
     public List<string> Images { get; set; }
+
+    /// <summary>
+    /// A list of product videos (maximum 6), where the key is the 0-based video position (0-5).
+    /// Supported formats: MP4, WEBM (max 15 MB). The value can be a URL prefixed with "url:", base64-encoded binary data
+    /// prefixed with "data:", or an empty string "" to delete the video at the given position.
+    /// </summary>
+    [JsonPropertyName("videos")]
+    public Dictionary<int, string> Videos { get; set; }
 
     /// <summary>
     /// An array containing product links to external warehouses (e.g. shops, wholesalers).

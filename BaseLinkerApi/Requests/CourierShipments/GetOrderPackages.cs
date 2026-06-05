@@ -40,6 +40,12 @@ public class GetOrderPackages : IRequest<GetOrderPackages.Response>
 
         [JsonPropertyName("tracking_status")]
         public string TrackingStatus { get; set; }
+
+        /// <summary>
+        /// Is shipment return
+        /// </summary>
+        [JsonPropertyName("is_return")]
+        public bool IsReturn { get; set; }
     }
         
     public class Response : ResponseBase

@@ -24,6 +24,7 @@ public class AmazonFulfillmentShipment
 /// <summary>
 /// The method allows you to retrieve transaction details for a selected order (it now works only for orders from Amazon)
 /// </summary>
+[Obsolete("Replaced by GetOrderTransactionData (changelog 2024-06-05).")]
 public class GetOrderTransactionDetails : IRequest<GetOrderTransactionDetails.Response>
 {
     /// <summary>

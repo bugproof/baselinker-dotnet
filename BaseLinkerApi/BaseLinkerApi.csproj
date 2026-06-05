@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net5.0;net6.0;net7.0;netstandard2.0</TargetFrameworks>
-        <LangVersion>default</LangVersion>
+        <TargetFrameworks>netstandard2.0;net8.0;net10.0</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
         <Nullable>annotations</Nullable>
 
         <AssemblyName>BaseLinker</AssemblyName>
-        
+
         <PackageId>BaseLinker</PackageId>
         <Description>Base.com API client library</Description>
-        <PackageVersion>0.5.2</PackageVersion>
+        <PackageVersion>1.0.0</PackageVersion>
         <PackageTags>ecommerce;e-commerce;baselinker</PackageTags>
         <RepositoryUrl>https://github.com/bugproof/baselinker-dotnet</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
@@ -18,9 +18,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="System.Net.Http.Json" Version="7.0.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
-      <PackageReference Include="System.Text.Json" Version="7.0.2" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
-      <PackageReference Include="System.Threading.RateLimiting" Version="7.0.0" />
+      <PackageReference Include="System.Net.Http.Json" Version="10.0.8" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+      <PackageReference Include="System.Text.Json" Version="10.0.8" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+      <PackageReference Include="System.Threading.RateLimiting" Version="10.0.8" />
     </ItemGroup>
 
 </Project>

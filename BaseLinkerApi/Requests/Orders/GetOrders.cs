@@ -47,6 +47,18 @@ public class GetOrders : IRequest<GetOrders.Response>
     /// </summary>
     [JsonPropertyName("include_custom_extra_fields")]
     public bool? IncludeCustomExtraFields { get; set; }
+
+    /// <summary>
+    /// (optional, false by default) Download orders with commissions information. If set to true, the response will contain additional "commissions" field.
+    /// </summary>
+    [JsonPropertyName("include_commissions")]
+    public bool? IncludeCommissions { get; set; }
+
+    /// <summary>
+    /// (optional, false by default) Base Connect and contractor data. If set to true, the response will contain additional "connect_data" field.
+    /// </summary>
+    [JsonPropertyName("include_connect_data")]
+    public bool? IncludeConnectData { get; set; }
     
     /// <summary>
     /// (optional) The status identifier from which orders are to be collected. Leave blank to download orders from all statuses.
@@ -74,7 +86,14 @@ public class GetOrders : IRequest<GetOrders.Response>
     /// </summary>
     [JsonPropertyName("filter_order_source_id")]
     public int? FilterOrderSourceId { get; set; }
-    
+
+    /// <summary>
+    /// (optional) External order identifier. Allows filtering orders by the original order ID assigned by the marketplace or online store
+    /// (e.g. Allegro transaction number, Amazon order number). This is the same value as the "external_order_id" field in the response.
+    /// </summary>
+    [JsonPropertyName("filter_external_order_id")]
+    public string? FilterExternalOrderId { get; set; }
+
     public class Product
     {
         [JsonPropertyName("storage")]
@@ -103,7 +122,10 @@ public class GetOrders : IRequest<GetOrders.Response>
 
         [JsonPropertyName("ean")]
         public string Ean { get; set; }
-            
+
+        [JsonPropertyName("asin")]
+        public string Asin { get; set; }
+
         [JsonPropertyName("location")]
         public string Location { get; set; }
             
@@ -297,11 +319,29 @@ public class GetOrders : IRequest<GetOrders.Response>
         [JsonPropertyName("order_page")]
         public string OrderPage { get; set; }
 
-        [JsonPropertyName("pick_status")]
-        public int PickStatus { get; set; }
+        /// <summary>
+        /// Flag indicating the status of the order products collection (1 - all products collected, 0 - not all).
+        /// </summary>
+        [JsonPropertyName("pick_state")]
+        public int PickState { get; set; }
 
-        [JsonPropertyName("pack_status")]
-        public int PackStatus { get; set; }
+        /// <summary>
+        /// Flag indicating the status of the order products packing (1 - all products packed, 0 - not all).
+        /// </summary>
+        [JsonPropertyName("pack_state")]
+        public int PackState { get; set; }
+
+        /// <summary>
+        /// The commissions that the marketplace charges for an order. Returned only when commission data is requested (with_commission flag enabled).
+        /// </summary>
+        [JsonPropertyName("commissions")]
+        public object Commissions { get; set; }
+
+        /// <summary>
+        /// Data from Base Connect linked to the order. Returned only when include_connect_data is set to true.
+        /// </summary>
+        [JsonPropertyName("connect_data")]
+        public object ConnectData { get; set; }
 
         [JsonPropertyName("products")]
         public List<Product> Products { get; set; }
