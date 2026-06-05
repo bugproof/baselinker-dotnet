@@ -3,7 +3,6 @@
 # Base.com API client for .NET
 [![NuGet](https://img.shields.io/nuget/v/BaseLinker)](https://www.nuget.org/packages/BaseLinker/)
 [![Conforms to the update](https://img.shields.io/badge/update-2026--06--01-brightgreen)](https://api.baselinker.com/index.php?changelog)
-[![Sponsor](https://img.shields.io/github/sponsors/bugproof)](https://github.com/sponsors/bugproof)
 [![NuGet downloads](https://img.shields.io/nuget/dt/BaseLinker.svg)](https://www.nuget.org/packages/BaseLinker/)
 
 This library implements all methods and correctly handles API request limits. 
