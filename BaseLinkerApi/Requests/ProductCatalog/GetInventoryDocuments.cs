@@ -156,12 +156,14 @@ public class GetInventoryDocuments : IRequest<GetInventoryDocuments.Response>
         /// <summary>
         /// Source object type: 1-order, 2-purchase order, 3-stock take, 4-order return, 7-fulfillment delivery, 8-transfer
         /// </summary>
+        [Obsolete("Deprecated (changelog 2026-04-20). Use SourceObjectType instead.")]
         [JsonPropertyName("connection_type")]
         public int ConnectionType { get; set; }
 
         /// <summary>
         /// Source object ID
         /// </summary>
+        [Obsolete("Deprecated (changelog 2026-04-20). Use SourceObjectId instead.")]
         [JsonPropertyName("connection_id")]
         public int ConnectionId { get; set; }
 
