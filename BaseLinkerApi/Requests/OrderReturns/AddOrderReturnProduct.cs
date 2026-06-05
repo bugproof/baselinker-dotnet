@@ -15,6 +15,12 @@ public class AddOrderReturnProduct : IRequest<AddOrderReturnProduct.Response>
     public int ReturnId { get; set; }
 
     /// <summary>
+    /// (optional) ID of connected order item from BaseLinker order manager.
+    /// </summary>
+    [JsonPropertyName("order_product_id")]
+    public int? OrderProductId { get; set; }
+
+    /// <summary>
     /// Type of product source storage (available values: "db" - BaseLinker internal inventory, "shop" - online shop storage, "warehouse" - the connected wholesaler)
     /// </summary>
     [JsonPropertyName("storage")]
