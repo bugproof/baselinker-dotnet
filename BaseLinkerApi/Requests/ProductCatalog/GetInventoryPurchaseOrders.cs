@@ -56,6 +56,21 @@ public class GetInventoryPurchaseOrders : IRequest<GetInventoryPurchaseOrders.Re
     [JsonPropertyName("page")]
     public int? Page { get; set; }
 
+    public class AdditionalCost
+    {
+        /// <summary>
+        /// Additional cost name
+        /// </summary>
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Additional cost value
+        /// </summary>
+        [JsonPropertyName("cost")]
+        public decimal Cost { get; set; }
+    }
+
     public class PurchaseOrder
     {
         /// <summary>
@@ -111,6 +126,13 @@ public class GetInventoryPurchaseOrders : IRequest<GetInventoryPurchaseOrders.Re
         public DateTimeOffset? DateCompleted { get; set; }
 
         /// <summary>
+        /// (optional) Expected delivery date (Unix timestamp)
+        /// </summary>
+        [JsonPropertyName("date_expected_delivery")]
+        [JsonConverter(typeof(UnixDateTimeOffsetConverter))]
+        public DateTimeOffset? DateExpectedDelivery { get; set; }
+
+        /// <summary>
         /// Warehouse identifier
         /// </summary>
         [JsonPropertyName("warehouse_id")]
@@ -153,6 +175,12 @@ public class GetInventoryPurchaseOrders : IRequest<GetInventoryPurchaseOrders.Re
         public decimal TotalCost { get; set; }
 
         /// <summary>
+        /// (optional) List of additional costs assigned to the purchase order.
+        /// </summary>
+        [JsonPropertyName("additional_cost")]
+        public List<AdditionalCost> AdditionalCost { get; set; }
+
+        /// <summary>
         /// Total cost of received items
         /// </summary>
         [JsonPropertyName("completed_total_cost")]
@@ -175,6 +203,12 @@ public class GetInventoryPurchaseOrders : IRequest<GetInventoryPurchaseOrders.Re
         /// </summary>
         [JsonPropertyName("cost_invoice_no")]
         public string CostInvoiceNo { get; set; }
+
+        /// <summary>
+        /// (optional) URL to download uploaded cost invoice file
+        /// </summary>
+        [JsonPropertyName("cost_invoice_file")]
+        public string CostInvoiceFile { get; set; }
 
         /// <summary>
         /// (optional) Purchase order notes/description
