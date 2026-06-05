@@ -56,6 +56,12 @@ public class AddInventoryDocument : IRequest<AddInventoryDocument.Response>
     [JsonPropertyName("invoice_no")]
     public string? InvoiceNo { get; set; }
 
+    /// <summary>
+    /// (optional) Document notes/description
+    /// </summary>
+    [JsonPropertyName("notes")]
+    public string? Notes { get; set; }
+
     public class Response : ResponseBase
     {
         /// <summary>

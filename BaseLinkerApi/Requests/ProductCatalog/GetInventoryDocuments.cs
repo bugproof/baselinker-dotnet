@@ -14,6 +14,19 @@ namespace BaseLinkerApi.Requests.ProductCatalog;
 public class GetInventoryDocuments : IRequest<GetInventoryDocuments.Response>
 {
     /// <summary>
+    /// (optional) The source object type to filter by: 1 - order, 2 - purchase order, 3 - stock take,
+    /// 4 - order return, 7 - fulfillment delivery, 8 - transfer
+    /// </summary>
+    [JsonPropertyName("filter_source_object_type")]
+    public int? FilterSourceObjectType { get; set; }
+
+    /// <summary>
+    /// (optional) The source object ID to filter by
+    /// </summary>
+    [JsonPropertyName("filter_source_object_id")]
+    public int? FilterSourceObjectId { get; set; }
+
+    /// <summary>
     /// (optional) A specific inventory document ID
     /// </summary>
     [JsonPropertyName("filter_document_id")]
@@ -151,6 +164,25 @@ public class GetInventoryDocuments : IRequest<GetInventoryDocuments.Response>
         /// </summary>
         [JsonPropertyName("connection_id")]
         public int ConnectionId { get; set; }
+
+        /// <summary>
+        /// Document notes/comments
+        /// </summary>
+        [JsonPropertyName("notes")]
+        public string Notes { get; set; }
+
+        /// <summary>
+        /// Type of source object that created this document: 0-no source, 1-order, 2-purchase order, 3-stock take,
+        /// 4-order return, 7-fulfillment delivery, 8-transfer
+        /// </summary>
+        [JsonPropertyName("source_object_type")]
+        public int SourceObjectType { get; set; }
+
+        /// <summary>
+        /// ID of the source object. 0 if no source
+        /// </summary>
+        [JsonPropertyName("source_object_id")]
+        public int SourceObjectId { get; set; }
 
         /// <summary>
         /// Additional not parsed data
