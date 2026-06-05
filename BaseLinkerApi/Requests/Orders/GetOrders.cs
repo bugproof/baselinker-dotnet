@@ -86,7 +86,14 @@ public class GetOrders : IRequest<GetOrders.Response>
     /// </summary>
     [JsonPropertyName("filter_order_source_id")]
     public int? FilterOrderSourceId { get; set; }
-    
+
+    /// <summary>
+    /// (optional) External order identifier. Allows filtering orders by the original order ID assigned by the marketplace or online store
+    /// (e.g. Allegro transaction number, Amazon order number). This is the same value as the "external_order_id" field in the response.
+    /// </summary>
+    [JsonPropertyName("filter_external_order_id")]
+    public string? FilterExternalOrderId { get; set; }
+
     public class Product
     {
         [JsonPropertyName("storage")]
