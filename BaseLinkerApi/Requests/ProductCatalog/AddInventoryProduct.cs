@@ -103,6 +103,13 @@ public class AddInventoryProduct : IRequest<AddInventoryProduct.Response>
     public double Length { get; set; }
 
     /// <summary>
+    /// Product average cost. If storage documents are turned off, this field sets product average cost.
+    /// If storage documents are turned on, a value in this field can be set in two cases: while creating a new product or when a current average cost is set to 0.
+    /// </summary>
+    [JsonPropertyName("average_cost")]
+    public decimal? AverageCost { get; set; }
+
+    /// <summary>
     /// Product star type. It takes from 0 to 5 values. 0 means no starring.
     /// </summary>
     [JsonPropertyName("star")]
