@@ -51,6 +51,12 @@ public class GetInventoryPurchaseOrders : IRequest<GetInventoryPurchaseOrders.Re
     public string? FilterDocumentNumber { get; set; }
 
     /// <summary>
+    /// (optional) Limiting results to purchase orders containing a product with the given ID
+    /// </summary>
+    [JsonPropertyName("filter_product_id")]
+    public int? FilterProductId { get; set; }
+
+    /// <summary>
     /// (optional) Results paging (100 documents per page)
     /// </summary>
     [JsonPropertyName("page")]
